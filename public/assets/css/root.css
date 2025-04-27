@@ -1,3 +1,8 @@
 :root {
-
+    --primary-background-color: #1f2333;
+    --primary-color: white;
+    --accent-color: #599bfa;
+    --border-color: #ffffff15;
+    --primary-faded-color: #3b82f612;
+    --primary-text-family: "Poppins", sans-serif;
 }

@@ -1,0 +1,101 @@
+body {
+    font-family: var(--primary-text-family);
+    background: var(--primary-background-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*
+ * Navigator
+ */
+.nav {
+    border-bottom: 2px solid var(--border-color);
+}
+.nav nav {
+    display: grid;
+    grid-template-columns: 275px auto;
+    gap: 25px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.nav nav div:nth-child(2) {
+    display: flex;
+    justify-content: end;
+}
+.nav nav .dropdown {
+    display: inline-block;
+}
+.nav nav .dropdown:hover .dropdown-items {
+    display: block;
+}
+.nav nav .dropdown .dropdown-items {
+    display: none;
+    background-color: #2e3343;
+    border: 2px solid #393e4e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    border-radius: 10px;
+}
+.nav nav .dropdown .dropdown-items a {
+    font-size: 14px;
+    display: block;
+    padding: 7.5px 10px 7.5px 10px;
+    border-radius: 0;
+}
+.nav nav .dropdown .dropdown-items a:hover i {
+    transform: rotate(0deg);
+}
+.nav nav .dropdown .dropdown-items a i {
+    font-size: 12px;
+    padding-right: 5px;
+}
+.nav nav .dropdown .dropdown-items .divider {
+    width: 100%;
+    border-bottom: 2px solid #393e4e;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.nav nav img {
+    position: absolute;
+    margin-top: 5px;
+}
+.nav nav a {
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 600;
+    transition: 0.1s;
+    color: var(--primary-color);
+}
+.nav nav a:hover {
+    color: var(--accent-color);
+    background: var(--primary-faded-color);
+    cursor: pointer;
+}
+.nav nav a:hover i {
+    transform: rotate(180deg);
+    margin-left: 5px;
+}
+.nav nav a  i {
+    font-size: 12px;
+    margin-left: 5px;
+    transition: 0.1s;
+}
+
+/*
+ * Header
+ */
+header img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    z-index: -9999;
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0))); mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+    opacity: 0.2;
+}
