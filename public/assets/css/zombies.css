@@ -22,7 +22,7 @@ body {
     padding: 25px;
     box-sizing: border-box;
 }
-.nav nav div:nth-child(2) {
+.nav nav > div:nth-child(2) {
     display: flex;
     justify-content: end;
 }
@@ -52,7 +52,7 @@ body {
 }
 .nav nav .dropdown .dropdown-items a i {
     font-size: 12px;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 .nav nav .dropdown .dropdown-items .divider {
     width: 100%;
@@ -98,4 +98,65 @@ header img {
     z-index: -9999;
     -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0))); mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
     opacity: 0.2;
+}
+.header {
+    margin-top: 200px;
+}
+.header h1 {
+    color: var(--primary-color);
+    font-size: 26px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+.header .header-description {
+    color: var(--primary-color-darker);
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+.header .header-statistics {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.header .header-statistics i {
+    color: var(--accent-color);
+    font-size: 16px;
+    border-radius: 100px;
+}
+
+/*
+ * Homepage Serverlist
+ */
+.homepage-serverlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 25px;
+}
+.homepage-serverlist > div {
+    background: var(--primary-faded-color);
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+/*
+ * Scrollbar
+ */
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: var(--accent-color);
+    cursor: pointer;
 }

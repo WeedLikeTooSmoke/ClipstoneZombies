@@ -1,0 +1,34 @@
+/*
+ *  INFINITE PULSE ANIMATION
+ */
+.pulse {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+}
+
+/*
+ *  PAGE ANIMATION
+ */
+.page {
+    animation: page-animation 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes page-animation {
+    0% {
+        opacity: 0;
+        margin-top: 0px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: -20px;
+    }
+}

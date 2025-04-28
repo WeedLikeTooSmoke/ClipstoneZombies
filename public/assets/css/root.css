@@ -1,6 +1,7 @@
 :root {
     --primary-background-color: #1f2333;
     --primary-color: white;
+    --primary-color-darker: #cdcdcd;
     --accent-color: #599bfa;
     --border-color: #ffffff15;
     --primary-faded-color: #3b82f612;
