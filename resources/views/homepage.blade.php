@@ -8,6 +8,9 @@
     <body>
         <x-global.navigator/>
         <x-global.header/>
+
+        <x-homepage.serverlist/>
+
         <x-global.footer/>
     </body>
 </html>

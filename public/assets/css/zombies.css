@@ -42,10 +42,16 @@ body {
     border-radius: 10px;
 }
 .nav nav .dropdown .dropdown-items a {
+    color: var(--primary-color-darker);
     font-size: 14px;
     display: block;
     padding: 7.5px 10px 7.5px 10px;
     border-radius: 0;
+}
+.nav nav .dropdown .dropdown-items a:hover {
+    color: var(--accent-color);
+    background: var(--primary-faded-color);
+    cursor: pointer;
 }
 .nav nav .dropdown .dropdown-items a:hover i {
     transform: rotate(0deg);
@@ -120,7 +126,7 @@ header img {
 }
 .header .header-statistics {
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -135,15 +141,55 @@ header img {
 /*
  * Homepage Serverlist
  */
+.homepage-header {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 225px;
+    margin-bottom: 5px;
+}
+.homepage-description {
+    color: var(--primary-color-darker);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
 .homepage-serverlist {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 25px;
 }
 .homepage-serverlist > div {
-    background: var(--primary-faded-color);
+    background: #63636314;
     padding: 25px;
     box-sizing: border-box;
+}
+.homepage-serverlist div .header {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.homepage-serverlist div .header i {
+    color: var(--accent-color);
+    font-size: 16px;
+    border-radius: 100px;
+}
+/*
+ *  DEFAULT PROGRESS BAR
+ */
+.homepage-serverlist > div progress {
+    border-radius: 7px;
+    width: 100%;
+    height: 22px;
+    box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+    margin-top: 25px;
+}
+::-webkit-progress-bar {
+    background-color: #bdbdbd21;
+    border-radius: 7px;
+}
+::-webkit-progress-value {
+    background-color: var(--accent-color);
+    border-radius: 7px;
 }
 
 /*
