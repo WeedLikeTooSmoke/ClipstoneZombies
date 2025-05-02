@@ -141,14 +141,14 @@ header img {
 /*
  * Homepage Serverlist
  */
-.homepage-header {
+.homepage-serverlist-header {
     color: var(--primary-color);
     font-size: 18px;
     font-weight: 600;
     margin-top: 225px;
     margin-bottom: 5px;
 }
-.homepage-description {
+.homepage-serverlist-description {
     color: var(--primary-color-darker);
     font-size: 16px;
     margin-bottom: 20px;
@@ -162,6 +162,7 @@ header img {
     background: #63636314;
     padding: 25px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 .homepage-serverlist div .header {
     margin-top: 0;
@@ -173,23 +174,55 @@ header img {
     font-size: 16px;
     border-radius: 100px;
 }
-/*
- *  DEFAULT PROGRESS BAR
- */
 .homepage-serverlist > div progress {
     border-radius: 7px;
     width: 100%;
     height: 22px;
     box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
     margin-top: 25px;
+    border-radius: 10px;
 }
-::-webkit-progress-bar {
+.homepage-serverlist > div progress::-webkit-progress-bar {
     background-color: #bdbdbd21;
     border-radius: 7px;
 }
-::-webkit-progress-value {
+.homepage-serverlist > div progress::-webkit-progress-value {
     background-color: var(--accent-color);
     border-radius: 7px;
+}
+
+/*
+ * Homepage Statistics
+ */
+.homepage-statistics-header {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 125px;
+    margin-bottom: 5px;
+}
+.homepage-statistics-description {
+    color: var(--primary-color-darker);
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.homepage-statistics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 25px;
+}
+.homepage-statistics > div {
+    padding: 75px 25px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    text-align: center;
+    color: var(--primary-color);
+}
+.homepage-statistics-amount {
+    font-weight: 600;
+    padding-top: 20px;
+    font-size: 26px;
 }
 
 /*

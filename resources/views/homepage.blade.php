@@ -10,6 +10,7 @@
         <x-global.header/>
 
         <x-homepage.serverlist/>
+        <x-homepage.statistics/>
 
         <x-global.footer/>
     </body>

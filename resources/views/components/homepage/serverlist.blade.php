@@ -1,10 +1,11 @@
 <div class="container page">
-    <div class="homepage-header">
+    <div class="homepage-serverlist-header">
         Clipstone Zombies Serverlist
     </div>
-    <div class="homepage-description">
+    <div class="homepage-serverlist-description">
         Showcasing some of Clipstone Zombies servers
     </div>
+
     <div class="homepage-serverlist">
         <div>
             <div class="header">
