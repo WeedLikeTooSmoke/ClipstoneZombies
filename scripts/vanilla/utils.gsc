@@ -1,14 +1,17 @@
-// Include Base Game Scripts
 #include maps/mp/_utility;
 #include common_scripts/utility;
 
+#include scripts/zm/clipstone/utils;
+#include scripts/zm/clipstone/account;
+#include scripts/zm/clipstone/leaderboards;
+#include scripts/zm/clipstone/cmds;
+#include scripts/zm/clipstone/staff;
+
 getCurrentMap()
 {
-    // Assign map dvars to variable
     location = getDvar( "ui_zm_mapstartlocation" );
     gamemode = getDvar( "ui_gametype" );
 
-    // Check and then return the current map of the server
     if( location == "processing" )
         return "Buried";
     else if( location == "rooftop" )
@@ -33,6 +36,5 @@ getCurrentMap()
 
 kickPlayerWithReason(player, reason)
 {
-    // Kicks player with a given reason
     executeCommand("clientkick_for_reason  " + player GetEntityNumber() + " \"" + reason + "\"");
 }
