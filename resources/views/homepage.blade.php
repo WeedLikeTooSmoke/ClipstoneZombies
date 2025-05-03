@@ -11,6 +11,7 @@
 
         <x-homepage.serverlist/>
         <x-homepage.statistics/>
+        <x-homepage.features/>
 
         <x-global.footer/>
     </body>

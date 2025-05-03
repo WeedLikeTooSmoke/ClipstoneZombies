@@ -1,18 +1,17 @@
 > [!TIP]
-> Gamemodes to come: <br/>
-> Vanilla.<br/>
-> Modded.
+> Features to come for vanilla:<br/><br/>
+> Highround System:<br/>
+> Solo, Duo, Trio, Quad etc collections to seperate harder rounds obtained by the players including kills, revives, deaths and other stats in the records.<br/><br/>
+> Statistics System:<br/>
+> Collecting all statistics for stats leaderboard as well as for viewing previous games, KDR. So players can view how they play in pretty charts.
 
 > [!TIP]
-> Features to come for vanilla:<br/>
-> Round leaderboards in various different ways to be fair.<br/>
-> Statistic Leaderboards counting all stats from the base game. <br/>
-
-> [!TIP]
-> Features to come for modded:<br/>
-> Round leaderboards in various different ways to be fair.<br/>
-> Statistic Leaderboards counting all stats from the base game. <br/>
-> Command bank to deposit, withdraw & pay other players.<br/>
-> In-game shop to buy extra items.<br/>
-> Missions for a more immersive gameplay experience.<br/>
-> Random questions that give extra cash inbetween waiting for zombies to spawn.<br/>
+> Features to come for Modded:<br/><br/>
+> Highround System:<br/>
+> Solo, Duo, Trio, Quad etc collections to seperate harder rounds obtained by the players.<br/><br/>
+> Statistics System:<br/>
+> Collecting all statistics for stats leaderboard as well as for viewing previous games, KDR. So players can view how they play in pretty charts.<br/><br/>
+> Bank System:<br/>
+> Deposit, Withdraw, Pay other players and gain interest on money saved in the bank.<br/><br/>
+> Missions System:<br/>
+> Accept, Decline & Complete missions given randomly or by command.
