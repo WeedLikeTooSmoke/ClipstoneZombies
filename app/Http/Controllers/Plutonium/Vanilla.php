@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Plutonium;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Models\User;
 
-class VanillaPlutoniumController extends Controller
+class VanillaController extends Controller
 {
 public function account(Request $request)
     {
