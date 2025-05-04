@@ -16,12 +16,7 @@ public function account(Request $request)
             'name',
         ]);
 
-        // $data['guid'] = '3390756';
-        // $data['name'] = 'Dec';
-
         $player = User::where('guid', '=', '3390756')->get();
-
-        // dd($player);
 
         if ($player->count() == 0) {
             return response()->json([
