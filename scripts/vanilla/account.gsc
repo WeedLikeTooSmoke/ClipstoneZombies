@@ -25,7 +25,6 @@ account(player)
 
     jsonDump("account", result, 4);
 
-    player.pers["real_username"] = player.name;
     player.pers["level"] = int(account["account-level"]);
     player.pers["rank"] = int(account["account-rank"]);
     player.pers["money"] = int(account["account-money"]);
