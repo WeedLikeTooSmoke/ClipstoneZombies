@@ -1,0 +1,23 @@
+{
+  stateMap "default";
+
+  vertexShader 3.0 "distortion_scale_ua_zfeather_dtex.hlsl"
+  {
+    worldViewProjectionMatrix = constant.transposeWorldViewProjectionMatrix;
+    uvAnimParms = material.uvAnimParms;
+    distortionScale = material.distortionScale;
+  }
+
+  pixelShader 3.0 "distortion_zfeather.hlsl"
+  {
+    normalMapSampler = material.colorMap;
+    colorMapSampler = sampler.resolvedPostSun;
+    floatZSampler = sampler.floatZ;
+  }
+
+  vertex.position = code.position;
+  vertex.color[0] = code.color;
+  vertex.texcoord[0] = code.texcoord[0];
+  vertex.normal = code.normal;
+  vertex.texcoord[1] = code.tangent;
+}

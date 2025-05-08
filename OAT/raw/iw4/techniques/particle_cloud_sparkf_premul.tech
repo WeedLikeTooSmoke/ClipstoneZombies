@@ -1,0 +1,17 @@
+{
+  stateMap "default";
+
+  vertexShader 3.0 "particle_cloud_sparkf.hlsl"
+  {
+    worldViewMatrix = constant.transposeWorldViewMatrix;
+    projectionMatrix = constant.transposeProjectionMatrix;
+  }
+
+  pixelShader 3.0 "particle_cloud_sparkf_premul.hlsl"
+  {
+    colorMapSampler = material.colorMap;
+  }
+
+  vertex.position = code.position;
+  vertex.texcoord[0] = code.texcoord[0];
+}

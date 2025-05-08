@@ -1,0 +1,19 @@
+{
+  stateMap "default";
+
+  vertexShader 3.0 "particle_cloud_spark.hlsl"
+  {
+    worldViewMatrix = constant.transposeWorldViewMatrix;
+    worldViewMatrix1 = constant.transposeWorldViewMatrix1;
+    worldViewMatrix2 = constant.transposeWorldViewMatrix2;
+    projectionMatrix = constant.transposeProjectionMatrix;
+  }
+
+  pixelShader 3.0 "particle_cloud_spark.hlsl"
+  {
+    colorMapSampler = material.colorMap;
+  }
+
+  vertex.position = code.position;
+  vertex.texcoord[0] = code.texcoord[0];
+}

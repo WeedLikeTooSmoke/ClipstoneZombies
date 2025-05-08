@@ -1,0 +1,8 @@
+"emissive":
+"emissive dfog":
+"emissive shadow":
+"emissive shadow dfog":
+  distortion_scale_zfeather;
+
+"solid wireframe":
+  wireframe_solid;

@@ -1,0 +1,8 @@
+"unlit":
+"emissive":
+"emissive dfog":
+  particle_cloud_spark_spot;
+  
+"emissive shadow":
+"emissive shadow dfog":
+  particle_cloud_spark_spot_shad;

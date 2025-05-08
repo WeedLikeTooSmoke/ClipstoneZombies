@@ -1,0 +1,26 @@
+{
+  stateMap "default";
+
+  vertexShader 3.0 "particle_cloud_spark_outdoor_spot.hlsl"
+  {
+    worldViewMatrix = constant.transposeWorldViewMatrix;
+    worldViewMatrix1 = constant.transposeWorldViewMatrix1;
+    worldViewMatrix2 = constant.transposeWorldViewMatrix2;
+    worldOutdoorLookupMatrix = constant.transposeWorldOutdoorLookupMatrix;
+    projectionMatrix = constant.transposeProjectionMatrix;
+    inverseViewMatrix = constant.inverseTransposeViewMatrix;
+  }
+
+  pixelShader 3.0 "particle_cloud_spark_outdoor_spot.hlsl"
+  {
+    colorMapSampler = material.colorMap;
+    outdoorMapSampler = sampler.outdoor;
+    lightSpotDir = constant.light.spotDir;
+    lightSpotFactors = constant.light.spotFactors;
+    lightPosition = constant.light.position;
+    lightDiffuse = constant.light.diffuse;
+  }
+
+  vertex.position = code.position;
+  vertex.texcoord[0] = code.texcoord[0];
+}
