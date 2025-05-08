@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 
 use App\Models\User;
+use App\Models\UsersStats;
 use App\Models\Join;
 
 use Illuminate\Http\Request;
@@ -46,6 +47,7 @@ class AuthController extends Controller
         $json = json_decode($query, true);
         if (isset($json[0]['name'])) {
             $data['name'] = $json[0]['name'];
+            $user = $this->createUsersStats($data);
             $user = $this->createUser($data);
             event(new Registered($user));
             Auth::login($user);
@@ -62,6 +64,13 @@ class AuthController extends Controller
             'guid' => $data['guid'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
+        ]);
+    }
+
+    public function createUsersStats(array $data)
+    {
+        return UsersStats::create([
+            'guid' => $data['guid'],
         ]);
     }
 

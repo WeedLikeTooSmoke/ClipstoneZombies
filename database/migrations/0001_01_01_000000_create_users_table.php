@@ -22,14 +22,6 @@ return new class extends Migration
             $table->integer('level')->default(1);
             $table->integer('banned')->default(0);
             $table->string('color')->default('7');
-            $table->bigInteger('score')->default(0);
-            $table->integer('rounds')->default(0);
-            $table->integer('highestRound')->default(0);
-            $table->bigInteger('kills')->default(0);
-            $table->bigInteger('revives')->default(0);
-            $table->bigInteger('downs')->default(0);
-            $table->bigInteger('headshots')->default(0);
-            $table->bigInteger('traveled')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

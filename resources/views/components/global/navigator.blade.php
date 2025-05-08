@@ -45,6 +45,7 @@
                         <a href="/profile/{{ Auth()->user()->name }}" wire:navigate><i class="fa-solid fa-user"></i> Profile</a>
                         <a href="/settings" wire:navigate><i class="fa-solid fa-gear"></i> Settings</a>
                         <a href="/admin" target="_blank"><i class="fa-solid fa-gears"></i> Admin</a>
+                        <a href="/auth/login" wire:navigate><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     @else
                         <a href="/login" wire:navigate><i class="fa-solid fa-right-to-bracket"></i> Login</a>
                         <a href="/register" wire:navigate><i class="fa-solid fa-user-plus"></i> Register</a>
