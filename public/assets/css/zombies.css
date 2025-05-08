@@ -294,6 +294,15 @@ header img {
     width: 100%;
     box-sizing: border-box;
     background: none;
+    outline: none;
+    transition: 0.1s;
+    color: var(--primary-color);
+}
+.login input:focus {
+    box-shadow: 0 0 10px var(--accent-color);
+}
+.login input:hover {
+    box-shadow: 0 0 10px var(--accent-color);
 }
 .login input::placeholder {
     color: var(--primary-color);
@@ -306,6 +315,11 @@ header img {
     border: 2px solid var(--accent-color);
     border-radius: 10px;
     background: none;
+    transition: 0.1s;
+}
+.login button:hover {
+    box-shadow: 0 0 10px var(--accent-color);
+    cursor: pointer;
 }
 
 /*
