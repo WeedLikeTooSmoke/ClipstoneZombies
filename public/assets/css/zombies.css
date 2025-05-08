@@ -279,6 +279,34 @@ header img {
     margin-top: 250px;
     border-radius: 10px;
 }
+.login label {
+    color: var(--primary-color);
+    display: inline-block;
+    margin-bottom: 25px;
+}
+.login label i {
+    margin-right: 10px;
+}
+.login input {
+    padding: 25px;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background: none;
+}
+.login input::placeholder {
+    color: var(--primary-color);
+}
+.login button {
+    color: var(--primary-color);
+    padding: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    background: none;
+}
 
 /*
  * Footer
