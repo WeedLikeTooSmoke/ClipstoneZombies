@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
-class Auth extends Controller
+class AuthController extends Controller
 {
-public function login(Request $request): RedirectResponse
+    public function login(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required',

@@ -1,6 +1,8 @@
 <div class="container page">
     <div class="login">
-        <form method="POST">
+        <form method="POST" action="{{ route('auth.register') }}">
+            @csrf
+
             <label><i class="fa-solid fa-user"></i> Username</label><br>
             <input type="text" name="name" placeholder="Username..."/><br><br><br>
 
