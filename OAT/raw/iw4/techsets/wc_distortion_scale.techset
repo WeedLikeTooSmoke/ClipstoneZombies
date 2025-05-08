@@ -1,8 +1,0 @@
-"emissive":
-"emissive dfog":
-"emissive shadow":
-"emissive shadow dfog":
-  distortion_scale;
-
-"solid wireframe":
-  wireframe_solid;

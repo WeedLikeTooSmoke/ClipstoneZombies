@@ -1,8 +1,0 @@
-"unlit":
-"emissive":
-"emissive dfog":
-  particle_cloud_outdoor_premul_spot;
-  
-"emissive shadow":
-"emissive shadow dfog":
-  particle_cloud_outdoor_premul_spot_shad;
