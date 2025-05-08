@@ -10,50 +10,50 @@
         <div>
             Highest Round
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $highestRound }}
             </div>
         </div>
         <div>
             Zombies Killed
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $zombiesKilled }}
             </div>
         </div>
         <div>
             Money Accumulated
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $moneyAccumulated }}
             </div>
         </div>
         <div>
             Missions Completed
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $missionsCompleted }}
             </div>
         </div>
 
         <div>
             Money Gambled
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $moneyGambled }}
             </div>
         </div>
         <div>
             Bosses Killed
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $bossesKilled }}
             </div>
         </div>
         <div>
             Distance Traveled
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $distanceTraveled }}
             </div>
         </div>
         <div>
             Players Banned
             <div class="homepage-statistics-amount">
-                {{ $userCount }}
+                {{ $playersBanned }}
             </div>
         </div>
     </div>

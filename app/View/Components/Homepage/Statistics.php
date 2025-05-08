@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 use Illuminate\Support\Facades\Cache;
 
 use App\Models\User;
+use App\Models\UsersStats;
 
 class Statistics extends Component
 {
@@ -24,12 +25,47 @@ class Statistics extends Component
      */
     public function render(): View|Closure|string
     {
-        $userCount = Cache::remember('userCount', 10, function () {
-            return User::all()->count();
+        $highestRound = Cache::remember('highestRound', 10, function () {
+            return UsersStats::max('highest_round') ?? 0;
+        });
+
+        $zombiesKilled = Cache::remember('zombiesKilled', 10, function () {
+            return UsersStats::sum('kills');
+        });
+
+        $moneyAccumulated = Cache::remember('moneyAccumulated', 10, function () {
+            return UsersStats::sum('score');
+        });
+
+        $missionsCompleted = Cache::remember('missionsCompleted', 10, function () {
+            return UsersStats::sum('missions_completed');
+        });
+
+        $moneyGambled = Cache::remember('moneyGambled', 10, function () {
+            return UsersStats::sum('money_gambled');
+        });
+
+        $bossesKilled = Cache::remember('bossesKilled', 10, function () {
+            return UsersStats::sum('bosses_killed');
+        });
+
+        $distanceTraveled = Cache::remember('distanceTraveled', 10, function () {
+            return UsersStats::sum('distance_traveled');
+        });
+
+        $playersBanned = Cache::remember('playersBanned', 10, function () {
+            return User::sum('banned');
         });
 
         return view('components.homepage.statistics', [
-            'userCount' => $userCount,
+            'highestRound' => $highestRound,
+            'zombiesKilled' => $zombiesKilled,
+            'moneyAccumulated' => $moneyAccumulated,
+            'missionsCompleted' => $missionsCompleted,
+            'moneyGambled' => $moneyGambled,
+            'bossesKilled' => $bossesKilled,
+            'distanceTraveled' => $distanceTraveled,
+            'playersBanned' => $playersBanned,
         ]);
     }
 }
