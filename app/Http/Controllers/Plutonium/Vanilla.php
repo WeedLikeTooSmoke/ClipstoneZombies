@@ -9,7 +9,7 @@ use App\Models\User;
 
 class VanillaController extends Controller
 {
-public function account(Request $request)
+    public function account(Request $request)
     {
         $data = $request->only([
             'guid',
