@@ -3,11 +3,8 @@
         <form method="POST" action="{{ route('auth.register') }}">
             @csrf
 
-            <label><i class="fa-solid fa-user"></i> Username</label><br>
-            <input type="text" name="name" placeholder="Username..."/><br><br><br>
-
             <label><i class="fa-solid fa-user"></i> Plutonium GUID</label><br>
-            <input type="number" name="guid" placeholder="GUID..."/><br><br><br>
+            <input type="number" name="guid" placeholder="Plutonium GUID..."/><br><br><br>
 
             <label><i class="fa-solid fa-user"></i> Email</label><br>
             <input type="email" name="email" placeholder="Email..."/><br><br><br>
