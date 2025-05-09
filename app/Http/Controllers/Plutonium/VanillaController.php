@@ -69,13 +69,10 @@ class VanillaController extends Controller
     public function leaderboards(Request $request)
     {
         $data = $request->only([
+            'map',
             'players',
-            'players_names',
+            'players_count',
             'round',
-            'kills',
-            'downs',
-            'revives',
-            'deaths',
         ]);
     }
 
