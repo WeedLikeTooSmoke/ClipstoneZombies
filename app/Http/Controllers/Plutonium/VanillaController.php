@@ -11,9 +11,13 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Number;
 
 use App\Models\User;
+use App\Models\Join;
 
 class VanillaController extends Controller
 {
+    /**
+     * Game Functions
+     */
     public function account(Request $request)
     {
         $data = $request->only([
@@ -21,10 +25,12 @@ class VanillaController extends Controller
             'name',
         ]);
 
-        $player = User::where('guid', '=', '3390756')->get();
+        $player = User::where('guid', '=', $data['guid'])->get();
 
-        if ($player->count() == 0)
+        if ($player->count() == 0 && !self::checkApiHeaders($request->header('Http-Api-Key'), $request->header('Http-Api-Agent')))
         {
+            self::addFirstJoin($data['guid'], $data['name']);
+
             return response()->json([
                 'account-guid' => 0,
                 'account-name' => 0,
@@ -37,7 +43,7 @@ class VanillaController extends Controller
             ]);
         }
 
-        if ($player->count() > 0)
+        if ($player->count() > 0 && !self::checkApiHeaders($request->header('Http-Api-Key'), $request->header('Http-Api-Agent')))
         {
             if ($player[0]->email_verified_at == null) { $verified = 0; } else { $verified = 1; }
 
@@ -57,6 +63,30 @@ class VanillaController extends Controller
                     "-------------[ ^5Clipstone Zombies^7 ]-------------",
                 ]
             ]);
+        }
+    }
+
+    /**
+     * Helper Functions
+     */
+    public function addFirstJoin($guid, $name)
+    {
+        $addJoin = Join::updateOrCreate([
+            'guid' => $guid,
+        ],[
+            'name' => $name,
+        ]);
+    }
+
+    public function checkApiHeaders($key, $agent)
+    {
+        if ($key == config('plutonium.api.key') && $agent == config('plutonium.api.agent'))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -90,6 +120,7 @@ class VanillaController extends Controller
                 5 => 'MOD',
                 6 => 'ADMIN',
                 7 => 'OWNER',
+                default => 'NaN',
             };
 
             return $match;
