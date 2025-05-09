@@ -8,6 +8,8 @@ use App\Http\Controllers\Plutonium\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Illuminate\Support\Number;
+
 use App\Models\User;
 
 class VanillaController extends Controller
@@ -21,7 +23,8 @@ class VanillaController extends Controller
 
         $player = User::where('guid', '=', '3390756')->get();
 
-        if ($player->count() == 0) {
+        if ($player->count() == 0)
+        {
             return response()->json([
                 'account-guid' => 0,
                 'account-name' => 0,
@@ -32,13 +35,16 @@ class VanillaController extends Controller
                 'account-banned' => 0,
                 'account-color' => 0,
             ]);
-        } else {
+        }
+
+        if ($player->count() > 0)
+        {
             if ($player[0]->email_verified_at == null) { $verified = 0; } else { $verified = 1; }
 
             return response()->json([
                 'account-guid' => $player[0]->guid,
                 'account-name' => $player[0]->name,
-                'account-display-name' => "[^{$player[0]->color}{$player[0]->level}^7][^{$player[0]->color}{$player[0]->rank}^7] ^{$player[0]->color}{$player[0]->name}",
+                'account-display-name' => "[^{$player[0]->color}". self::levelType(config('plutonium.settings.level_type'), $player[0]->level) ."^7][^{$player[0]->color}". self::rankType(config('plutonium.settings.rank_type'), $player[0]->rank) ."^7] ^{$player[0]->color}{$player[0]->name}",
                 'account-verified' => $verified,
                 'account-rank' => $player[0]->rank,
                 'account-level' => $player[0]->level,
@@ -52,5 +58,49 @@ class VanillaController extends Controller
                 ]
             ]);
         }
+    }
+
+    public function levelType($type, $level)
+    {
+        if ($type == 1)
+        {
+            return Number::abbreviate($level);
+        }
+
+        if ($type == 2)
+        {
+            static $formatToRomanNumerals = new \NumberFormatter('@numbers=roman', \NumberFormatter::DECIMAL);
+            return $formatToRomanNumerals->format($level);
+        }
+
+        return $level;
+    }
+
+    public function rankType($type, $rank)
+    {
+        if ($type == 1)
+        {
+            $match = match ($rank)
+            {
+                0 => 'USER',
+                1 => 'VIP',
+                2 => 'VIP+',
+                3 => 'VIP++',
+                4 => 'VIP+++',
+                5 => 'MOD',
+                6 => 'ADMIN',
+                7 => 'OWNER',
+            };
+
+            return $match;
+        }
+
+        if ($type == 2)
+        {
+            static $formatToRomanNumerals = new \NumberFormatter('@numbers=roman', \NumberFormatter::DECIMAL);
+            return $formatToRomanNumerals->format($rank);
+        }
+
+        return $level;
     }
 }
