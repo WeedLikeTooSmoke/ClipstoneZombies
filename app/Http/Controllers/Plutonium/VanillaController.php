@@ -66,6 +66,32 @@ class VanillaController extends Controller
         }
     }
 
+    public function leaderboards(Request $request)
+    {
+        $data = $request->only([
+            'players',
+            'players_names',
+            'round',
+            'kills',
+            'downs',
+            'revives',
+            'deaths',
+        ]);
+    }
+
+    public function stats(Request $request)
+    {
+        $data = $request->only([
+            'guid',
+            'name',
+            'round',
+            'kills',
+            'downs',
+            'revives',
+            'deaths',
+        ]);
+    }
+
     /**
      * Helper Functions
      */
