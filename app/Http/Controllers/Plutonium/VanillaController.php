@@ -27,7 +27,7 @@ class VanillaController extends Controller
 
         $player = User::where('guid', '=', $data['guid'])->get();
 
-        if ($player->count() == 0 && !self::checkApiHeaders($request->header('Http-Api-Key'), $request->header('Http-Api-Agent')))
+        if ($player->count() == 0)
         {
             self::addFirstJoin($data['guid'], $data['name']);
 
@@ -43,7 +43,7 @@ class VanillaController extends Controller
             ]);
         }
 
-        if ($player->count() > 0 && !self::checkApiHeaders($request->header('Http-Api-Key'), $request->header('Http-Api-Agent')))
+        if ($player->count() > 0)
         {
             if ($player[0]->email_verified_at == null) { $verified = 0; } else { $verified = 1; }
 
@@ -92,6 +92,13 @@ class VanillaController extends Controller
         ]);
     }
 
+    public function autoMessages()
+    {
+        return response()->json([
+            'autoMessage' => config('plutonium.autoMessages.'.random_int(0, count(config('plutonium.autoMessages')) - 1)),
+        ]);
+    }
+
     /**
      * Helper Functions
      */
@@ -102,18 +109,6 @@ class VanillaController extends Controller
         ],[
             'name' => $name,
         ]);
-    }
-
-    public function checkApiHeaders($key, $agent)
-    {
-        if ($key == config('plutonium.api.key') && $agent == config('plutonium.api.agent'))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     public function levelType($type, $level)
