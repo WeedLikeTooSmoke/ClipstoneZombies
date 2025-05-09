@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Plutonium;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Plutonium\ApiController;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -22,26 +23,28 @@ class VanillaController extends Controller
 
         if ($player->count() == 0) {
             return response()->json([
-                'guid' => 0,
-                'name' => 0,
-                'verified' => 0,
-                'rank' => 0,
-                'level' => 0,
-                'banned' => 0,
-                'color' => 0,
+                'account-guid' => 0,
+                'account-name' => 0,
+                'account-display-name' => 0,
+                'account-verified' => 0,
+                'account-rank' => 0,
+                'account-level' => 0,
+                'account-banned' => 0,
+                'account-color' => 0,
             ]);
         } else {
             if ($player[0]->email_verified_at == null) { $verified = 0; } else { $verified = 1; }
 
             return response()->json([
-                'guid' => $player[0]->guid,
-                'name' => $player[0]->name,
-                'verified' => $verified,
-                'rank' => $player[0]->rank,
-                'level' => $player[0]->level,
-                'banned' => $player[0]->banned,
-                'color' => $player[0]->color,
-                'welcome' = [
+                'account-guid' => $player[0]->guid,
+                'account-name' => $player[0]->name,
+                'account-display-name' => "[^{$player[0]->color}{$player[0]->level}^7][^{$player[0]->color}{$player[0]->rank}^7] ^{$player[0]->color}{$player[0]->name}",
+                'account-verified' => $verified,
+                'account-rank' => $player[0]->rank,
+                'account-level' => $player[0]->level,
+                'account-banned' => $player[0]->banned,
+                'account-color' => $player[0]->color,
+                'account-welcome' => [
                     "-------------[ ^5Clipstone Zombies^7 ]-------------",
                     "Welcome to Clipstone Zombies. Play fair and enjoy the servers",
                     "Please read the rules to be sure you're not breaking them",
