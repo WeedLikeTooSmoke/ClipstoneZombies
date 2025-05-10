@@ -33,7 +33,11 @@ class VanillaController extends Controller
         if ($player->count() == 0)
         {
             // Add player to joins table for register
-            self::addFirstJoin($data['guid'], $data['name']);
+            $addJoin = Join::updateOrCreate([
+                'guid' => $guid,
+            ],[
+                'name' => $name,
+            ]);
 
             // Return not registered json data
             return response()->json([
@@ -97,6 +101,15 @@ class VanillaController extends Controller
         // Return success json result
         return response()->json([
             'result' => "[^2ClipstoneZombies^7] The current games record has successfully been uploaded!",
+        ]);
+    }
+
+    public function statistics(Request $request)
+    {
+        // Get only the data we want from the request
+        $data = $request->only([
+            'guid',
+            'name',
         ]);
     }
 

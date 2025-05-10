@@ -26,15 +26,6 @@ abstract class Controller
         return $type;
     }
 
-    public function addFirstJoin($guid, $name)
-    {
-        $addJoin = Join::updateOrCreate([
-            'guid' => $guid,
-        ],[
-            'name' => $name,
-        ]);
-    }
-
     public function levelType($type, $level)
     {
         if ($type == 1)
