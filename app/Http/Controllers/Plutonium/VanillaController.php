@@ -20,17 +20,22 @@ class VanillaController extends Controller
      */
     public function account(Request $request)
     {
+        // Get only the data we want from the request
         $data = $request->only([
             'guid',
             'name',
         ]);
 
+        // Get the player who joined the server
         $player = User::where('guid', '=', $data['guid'])->get();
 
+        // Player does not have an account
         if ($player->count() == 0)
         {
+            // Add player to joins table for register
             self::addFirstJoin($data['guid'], $data['name']);
 
+            // Return not registered json data
             return response()->json([
                 'account-guid' => 0,
                 'account-name' => 0,
@@ -43,10 +48,13 @@ class VanillaController extends Controller
             ]);
         }
 
+        // Player has an account
         if ($player->count() > 0)
         {
+            // Check if player has verified email
             if ($player[0]->email_verified_at == null) { $verified = 0; } else { $verified = 1; }
 
+            // Return registered json data
             return response()->json([
                 'account-guid' => $player[0]->guid,
                 'account-name' => $player[0]->name,
@@ -68,98 +76,51 @@ class VanillaController extends Controller
 
     public function leaderboards(Request $request)
     {
+        // Get only the data we want from the request
         $data = $request->only([
             'map',
             'players',
             'players_count',
             'round',
         ]);
-
-        $data["type"] = self::leaderboardType($data["players_count"]);
         $data["gamemode"] = "Vanilla";
 
+        // Create player('s') record in the leaderboards table
         Leaderboard::Create([
             'map' => $data["map"],
             'players' => $data["players"],
             'players_count' => $data["players_count"],
             'round' => $data["round"],
-            'type' => $data["type"],
             'gamemode' => $data["gamemode"],
         ]);
 
+        // Return success json result
         return response()->json([
-            'result' => "[^2ClipstoneZombies^7]",
+            'result' => "[^2ClipstoneZombies^7] The current games record has successfully been uploaded!",
         ]);
     }
 
-    public function autoMessages()
+    public function autoMessages(Request $request)
     {
+        // Get only the data we want from the request
+        $data = $request->only([
+            'map',
+        ]);
+
+        // Get a random number to determine what kind of message we want
+        if (random_int(0, 1) == 0) {
+            // Get the highest round record from the leaderboards table
+            $record = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->first();
+
+            // Return highest round record json
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7]: ".ucfirst($data['map'])." ".self::roundType($record['players_count'])." Record > ^2Round ".$record['round']." By ".$record['players'],
+            ]);
+        }
+
+        // Return random message from config
         return response()->json([
             'result' => config('plutonium.autoMessages.'.random_int(0, count(config('plutonium.autoMessages')) - 1)),
         ]);
-    }
-
-    /**
-     * Helper Functions
-     */
-    public function leaderboardType($players)
-    {
-        $type = match ($players) {
-            1 => "Solo",
-            2 => "Duo",
-            3 => "Trio",
-            4 => "Quad",
-            default => "NaN",
-        };
-
-        return $type;
-    }
-
-    public function addFirstJoin($guid, $name)
-    {
-        $addJoin = Join::updateOrCreate([
-            'guid' => $guid,
-        ],[
-            'name' => $name,
-        ]);
-    }
-
-    public function levelType($type, $level)
-    {
-        if ($type == 1)
-        {
-            return Number::abbreviate($level);
-        }
-
-        if ($type == 2)
-        {
-            static $formatToRomanNumerals = new \NumberFormatter('@numbers=roman', \NumberFormatter::DECIMAL);
-            return $formatToRomanNumerals->format($level);
-        }
-
-        return $level;
-    }
-
-    public function rankType($type, $rank)
-    {
-        if ($type == 1)
-        {
-            $match = match ($rank)
-            {
-                0 => 'USER',
-                1 => 'VIP',
-                2 => 'VIP+',
-                3 => 'VIP++',
-                4 => 'VIP+++',
-                5 => 'MOD',
-                6 => 'ADMIN',
-                7 => 'OWNER',
-                default => 'NaN',
-            };
-
-            return $match;
-        }
-
-        return $level;
     }
 }

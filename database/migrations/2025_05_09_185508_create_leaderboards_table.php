@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('players');
             $table->integer('players_count');
             $table->integer('round');
-            $table->string('type');
             $table->string('gamemode');
             $table->timestamps();
         });
