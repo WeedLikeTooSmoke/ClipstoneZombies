@@ -12,6 +12,7 @@ use Illuminate\Support\Number;
 
 use App\Models\User;
 use App\Models\Join;
+use App\Models\Leaderboard;
 
 class VanillaController extends Controller
 {
@@ -74,6 +75,11 @@ class VanillaController extends Controller
             'players_count',
             'round',
         ]);
+
+        $data["type"] = leaderboardType($data["players_count"]);
+        $data["gamemode"] = "Vanilla";
+
+        Leaderboard::Create($data);
     }
 
     public function stats(Request $request)
@@ -108,6 +114,8 @@ class VanillaController extends Controller
             4 => "Quad",
             default => "NaN",
         };
+
+        return $type;
     }
 
     public function addFirstJoin($guid, $name)
