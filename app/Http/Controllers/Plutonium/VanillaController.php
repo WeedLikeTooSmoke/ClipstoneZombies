@@ -57,10 +57,10 @@ class VanillaController extends Controller
                 'account-banned' => $player[0]->banned,
                 'account-color' => $player[0]->color,
                 'account-welcome' => [
-                    "-------------[ ^5Clipstone Zombies^7 ]-------------",
-                    "Welcome to Clipstone Zombies. Play fair and enjoy the servers",
+                    "-------------[ ^2Clipstone Zombies^7 ]-------------",
+                    "Welcome to ^2Clipstone Zombies^7. Play fair and enjoy the servers",
                     "Please read the rules to be sure you're not breaking them",
-                    "-------------[ ^5Clipstone Zombies^7 ]-------------",
+                    "-------------[ ^2Clipstone Zombies^7 ]-------------",
                 ]
             ]);
         }
@@ -92,13 +92,24 @@ class VanillaController extends Controller
     public function autoMessages()
     {
         return response()->json([
-            'autoMessage' => config('plutonium.autoMessages.'.random_int(0, count(config('plutonium.autoMessages')) - 1)),
+            'result' => config('plutonium.autoMessages.'.random_int(0, count(config('plutonium.autoMessages')) - 1)),
         ]);
     }
 
     /**
      * Helper Functions
      */
+    public function leaderboardType($players)
+    {
+        $type = match ($players) {
+            1 => "Solo",
+            2 => "Duo",
+            3 => "Trio",
+            4 => "Quad",
+            default => "NaN",
+        };
+    }
+
     public function addFirstJoin($guid, $name)
     {
         $addJoin = Join::updateOrCreate([

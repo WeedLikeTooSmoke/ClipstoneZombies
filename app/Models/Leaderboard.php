@@ -15,6 +15,7 @@ class Leaderboard extends Model
         'map',
         'players',
         'players_count',
+        'round',
         'type',
         'gamemode',
     ];
