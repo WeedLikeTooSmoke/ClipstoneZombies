@@ -110,7 +110,16 @@ class VanillaController extends Controller
         // Get a random number to determine what kind of message we want
         if (random_int(0, 1) == 0) {
             // Get the highest round record from the leaderboards table
-            $record = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->first();
+            $random = random_int(1, 8);
+            $record = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('players_count', $random)->first();
+
+            // Check if the record result is null
+            if ($record == null) {
+                // Return highest round record json
+                return response()->json([
+                    'result' => "[^2ClipstoneZombies^7]: ".ucfirst($data['map'])." ".self::roundType($random)." Record > ^2This record has not yet been set...",
+                ]);
+            }
 
             // Return highest round record json
             return response()->json([
