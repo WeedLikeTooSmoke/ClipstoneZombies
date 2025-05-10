@@ -12,11 +12,11 @@ return [
     ],
 
     'autoMessages' => [
-        '[^2CZ^7]: Website > ^2zombies.clipst.one',
-        '[^2CZ^7]: Twitter > ^2twitter.com/@ClipstoneZombie',
-        '[^2CZ^7]: Discord > ^2discord.gg/ClipstoneZombie',
-        '[^2CZ^7]: Youtube > ^2youtube.com/@ClipstoneZombie',
-        '[^2CZ^7]: Facebook > ^2facebook.com/@ClipstoneZombie',
-        '[^2CZ^7]: Reddit > ^2reddit.com/r/ClipstoneZombie',
+        '[^2ClipstoneZombies^7]: Website > ^2zombies.clipst.one',
+        '[^2ClipstoneZombies^7]: Twitter > ^2twitter.com/@ClipstoneZombie',
+        '[^2ClipstoneZombies^7]: Discord > ^2discord.gg/ClipstoneZombie',
+        '[^2ClipstoneZombies^7]: Youtube > ^2youtube.com/@ClipstoneZombie',
+        '[^2ClipstoneZombies^7]: Facebook > ^2facebook.com/@ClipstoneZombie',
+        '[^2ClipstoneZombies^7]: Reddit > ^2reddit.com/r/ClipstoneZombie',
     ],
 ];

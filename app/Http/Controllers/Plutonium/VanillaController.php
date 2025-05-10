@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Plutonium;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Plutonium\ApiController;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -76,22 +75,20 @@ class VanillaController extends Controller
             'round',
         ]);
 
-        $data["type"] = leaderboardType($data["players_count"]);
+        $data["type"] = self::leaderboardType($data["players_count"]);
         $data["gamemode"] = "Vanilla";
 
-        Leaderboard::Create($data);
-    }
+        Leaderboard::Create([
+            'map' => $data["map"],
+            'players' => $data["players"],
+            'players_count' => $data["players_count"],
+            'round' => $data["round"],
+            'type' => $data["type"],
+            'gamemode' => $data["gamemode"],
+        ]);
 
-    public function stats(Request $request)
-    {
-        $data = $request->only([
-            'guid',
-            'name',
-            'round',
-            'kills',
-            'downs',
-            'revives',
-            'deaths',
+        return response()->json([
+            'result' => "[^2ClipstoneZombies^7]",
         ]);
     }
 
@@ -161,12 +158,6 @@ class VanillaController extends Controller
             };
 
             return $match;
-        }
-
-        if ($type == 2)
-        {
-            static $formatToRomanNumerals = new \NumberFormatter('@numbers=roman', \NumberFormatter::DECIMAL);
-            return $formatToRomanNumerals->format($rank);
         }
 
         return $level;
