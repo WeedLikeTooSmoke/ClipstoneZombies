@@ -15,6 +15,17 @@ return new class extends Migration
             $table->id();
             $table->integer('guid')->unique();
             $table->bigInteger('score')->default(0);
+            $table->bigInteger('kills')->default(0);
+            $table->bigInteger('downs')->default(0);
+            $table->bigInteger('deaths')->default(0);
+            $table->bigInteger('suicides')->default(0);
+            $table->bigInteger('revives')->default(0);
+            $table->bigInteger('headshots')->default(0);
+            $table->bigInteger('melee_kills')->default(0);
+            $table->bigInteger('grenade_kills')->default(0);
+            $table->bigInteger('total_shots')->default(0);
+            $table->bigInteger('hits')->default(0);
+            $table->bigInteger('sacrifices')->default(0);
             $table->timestamps();
         });
     }

@@ -121,6 +121,17 @@ class VanillaController extends Controller
             'guid' => $data['guid'],
         ],[
             'score' => $data['score'] + $player[0]->score,
+            'kills' => $data['kills'] + $player[0]->kills,
+            'downs' => $data['downs'] + $player[0]->downs,
+            'deaths' => $data['deaths'] + $player[0]->deaths,
+            'suicides' => $data['suicides'] + $player[0]->suicides,
+            'revives' => $data['revives'] + $player[0]->revives,
+            'headshots' => $data['headshots'] + $player[0]->headshots,
+            'melee_kills' => $data['melee_kills'] + $player[0]->melee_kills,
+            'grenade_kills' => $data['grenade_kills'] + $player[0]->grenade_kills,
+            'total_shots' => $data['total_shots'] + $player[0]->total_shots,
+            'hits' => $data['hits'] + $player[0]->hits,
+            'sacrifices' => $data['sacrifices'] + $player[0]->sacrifices,
         ]);
 
         // Return success json result
