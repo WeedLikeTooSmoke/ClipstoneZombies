@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Number;
 
 use App\Models\User;
@@ -21,6 +22,12 @@ class VanillaController extends Controller
      */
     public function account(Request $request)
     {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('account');
+        }
+
         // Get only the data we want from the request
         $data = $request->only(['guid', 'name']);
 
@@ -34,16 +41,7 @@ class VanillaController extends Controller
             $addJoin = Join::updateOrCreate(['guid' => $data['guid']],['name' => $data['name']]);
 
             // Return not registered json data
-            return response()->json([
-                'account-guid' => 0,
-                'account-name' => 0,
-                'account-display-name' => 0,
-                'account-verified' => 0,
-                'account-rank' => 0,
-                'account-level' => 0,
-                'account-banned' => 0,
-                'account-color' => 0,
-            ]);
+            return self::returnInvalidRequestJson('account');
         }
 
         // Check if player has verified email
@@ -60,7 +58,7 @@ class VanillaController extends Controller
             'account-banned' => $player->banned,
             'account-color' => $player->color,
             'account-welcome' => [
-                 "-------------[ ^2Clipstone Zombies^7 ]-------------",
+                "-------------[ ^2Clipstone Zombies^7 ]-------------",
                 "Welcome to ^2Clipstone Zombies^7. Play fair and enjoy the servers",
                 "Please read the rules to be sure you're not breaking them",
                 "-------------[ ^2Clipstone Zombies^7 ]-------------",
@@ -70,6 +68,12 @@ class VanillaController extends Controller
 
     public function leaderboards(Request $request)
     {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('leaderboards');
+        }
+
         // Get only the data we want from the request
         $data = $request->only(['map', 'players', 'players_count', 'round']);
         $data["gamemode"] = "Vanilla";
@@ -91,6 +95,12 @@ class VanillaController extends Controller
 
     public function statistics(Request $request)
     {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('statistics');
+        }
+
         // Get only the data we want from the request
         $data = $request->only([
             'guid',
@@ -174,6 +184,50 @@ class VanillaController extends Controller
             'hits' => $data['hits'] + $player->hits,
             'sacrifices' => $data['sacrifices'] + $player->sacrifices,
             'doors_purchased' => $data['doors_purchased'] + $player->doors_purchased,
+            'distance_traveled' => $data['distance_traveled'] + $player->distance_traveled,
+            'boards' => $data['boards'] + $player->boards,
+            'drops' => $data['drops'] + $player->drops,
+            'nuke_pickedup' => $data['nuke_pickedup'] + $player->nuke_pickedup,
+            'insta_kill_pickedup' => $data['insta_kill_pickedup'] + $player->insta_kill_pickedup,
+            'full_ammo_pickedup' => $data['full_ammo_pickedup'] + $player->full_ammo_pickedup,
+            'double_points_pickedup' => $data['double_points_pickedup'] + $player->double_points_pickedup,
+            'meat_stink_pickedup' => $data['meat_stink_pickedup'] + $player->meat_stink_pickedup,
+            'carpenter_pickedup' => $data['carpenter_pickedup'] + $player->carpenter_pickedup,
+            'fire_sale_pickedup' => $data['fire_sale_pickedup'] + $player->fire_sale_pickedup,
+            'zombie_blood_pickedup' => $data['zombie_blood_pickedup'] + $player->zombie_blood_pickedup,
+            'use_magicbox' => $data['use_magicbox'] + $player->use_magicbox,
+            'use_pap' => $data['use_pap'] + $player->use_pap,
+            'specialty_armorvest_drank' => $data['specialty_armorvest_drank'] + $player->specialty_armorvest_drank,
+            'specialty_quickrevive_drank' => $data['specialty_quickrevive_drank'] + $player->specialty_quickrevive_drank,
+            'specialty_rof_drank' => $data['specialty_rof_drank'] + $player->specialty_rof_drank,
+            'specialty_fastreload_drank' => $data['specialty_fastreload_drank'] + $player->specialty_fastreload_drank,
+            'specialty_flakjacket_drank' => $data['specialty_flakjacket_drank'] + $player->specialty_flakjacket_drank,
+            'specialty_additionalprimaryweapon_drank' => $data['specialty_additionalprimaryweapon_drank'] + $player->specialty_additionalprimaryweapon_drank,
+            'specialty_longersprint_drank' => $data['specialty_longersprint_drank'] + $player->specialty_longersprint_drank,
+            'specialty_deadshot_drank' => $data['specialty_deadshot_drank'] + $player->specialty_deadshot_drank,
+            'specialty_scavenger_drank' => $data['specialty_scavenger_drank'] + $player->specialty_scavenger_drank,
+            'specialty_finalstand_drank' => $data['specialty_finalstand_drank'] + $player->specialty_finalstand_drank,
+            'specialty_grenadepulldeath_drank' => $data['specialty_grenadepulldeath_drank'] + $player->specialty_grenadepulldeath_drank,
+            'specialty_nomotionsensor' => $data['specialty_nomotionsensor'] ?? 0 + $player->specialty_nomotionsensor,
+            'wallbuy_weapons_purchased' => $data['wallbuy_weapons_purchased'] + $player->wallbuy_weapons_purchased,
+            'ammo_purchased' => $data['ammo_purchased'] + $player->ammo_purchased,
+            'upgraded_ammo_purchased' => $data['upgraded_ammo_purchased'] + $player->upgraded_ammo_purchased,
+            'power_turnedon' => $data['power_turnedon'] + $player->power_turnedon,
+            'power_turnedoff' => $data['power_turnedoff'] + $player->power_turnedoff,
+            'planted_buildables_pickedup' => $data['planted_buildables_pickedup'] + $player->planted_buildables_pickedup,
+            'buildables_built' => $data['buildables_built'] + $player->buildables_built,
+            'time_played_total' => $data['time_played_total'] + $player->time_played_total,
+            'zdogs_killed' => $data['zdogs_killed'] + $player->zdogs_killed,
+            'zdog_rounds_finished' => $data['zdog_rounds_finished'] + $player->zdog_rounds_finished,
+            'zdog_rounds_lost' => $data['zdog_rounds_lost'] + $player->zdog_rounds_lost,
+            'killed_by_zdog' => $data['killed_by_zdog'] + $player->killed_by_zdog,
+            'screechers_killed' => $data['screechers_killed'] + $player->screechers_killed,
+            'screecher_teleporters_used' => $data['screecher_teleporters_used'] + $player->screecher_teleporters_used,
+            'avogadro_defeated' => $data['avogadro_defeated'] + $player->avogadro_defeated,
+            'prison_brutus_killed' => $data['prison_brutus_killed'] + $player->prison_brutus_killed,
+            'buried_ghost_killed' => $data['buried_ghost_killed'] + $player->buried_ghost_killed,
+            'tomb_mechz_killed' => $data['tomb_mechz_killed'] + $player->tomb_mechz_killed,
+            'tomb_dig' => $data['tomb_dig'] + $player->tomb_dig,
         ]);
 
         // Return success json result
@@ -184,6 +238,12 @@ class VanillaController extends Controller
 
     public function messages(Request $request)
     {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('messages');
+        }
+
         // Get only the data we want from the request
         $data = $request->only(['map']);
 

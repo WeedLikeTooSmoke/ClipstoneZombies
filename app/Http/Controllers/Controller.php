@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
+
 abstract class Controller
 {
     /**
@@ -9,6 +11,33 @@ abstract class Controller
      *  Plutonium Helper Functions
      *  --------------------------
      */
+    public function returnInvalidRequestJson($type)
+    {
+        if ($type == "account")
+        {
+            return response()->json([
+                'account-guid' => 0,
+                'account-name' => 0,
+                'account-display-name' => "0",
+                'account-verified' => 0,
+                'account-rank' => 0,
+                'account-level' => 0,
+                'account-banned' => 0,
+                'account-color' => 0,
+                'account-welcome' => [
+                    "",
+                    "",
+                    "",
+                    "",
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'result' => "[^2ClipstoneZombies^7] This request failed to be executed!",
+        ]);
+    }
+
     public function roundType($players)
     {
         $match = match ($players) {
