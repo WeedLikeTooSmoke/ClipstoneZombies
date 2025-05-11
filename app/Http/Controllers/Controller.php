@@ -26,10 +26,10 @@ abstract class Controller
                 'account-banned' => 0,
                 'account-color' => 0,
                 'account-welcome' => [
-                    "",
-                    "",
-                    "",
-                    "",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
                 ]
             ]);
         }

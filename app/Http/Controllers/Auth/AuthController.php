@@ -71,6 +71,7 @@ class AuthController extends Controller
     {
         return UsersStats::create([
             'guid' => $data['guid'],
+            'name' => $data['name'],
         ]);
     }
 

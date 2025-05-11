@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users_stats', function (Blueprint $table) {
             $table->id();
             $table->integer('guid')->unique();
+            $table->string('name');
             $table->bigInteger('score')->default(0);
             $table->bigInteger('kills')->default(0);
             $table->bigInteger('downs')->default(0);

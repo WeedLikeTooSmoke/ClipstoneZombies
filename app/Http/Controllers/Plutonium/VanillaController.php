@@ -219,6 +219,34 @@ class VanillaController extends Controller
         ]);
     }
 
+    public function getStatistics(Request $request)
+    {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('getStatistics');
+        }
+
+        // Get only the data we want from the request
+        $data = $request->only(['stats_type']);
+
+        // Get the top 5 records from the leaderboards table
+        $stats = UsersStats::orderBy($data['stats_type'], 'desc')->limit(5)->get();
+
+        // Return leaderboards data
+        return response()->json([
+            'statistics-details' => [
+                "-------------[ ^2".ucfirst($stats[0]->name)." Records^7 ]-------------",
+                "[^2ClipstoneZombies^7]: 1st > ^21^7 by ^2".$stats[0]->name,
+                "[^2ClipstoneZombies^7]: 2nd > ^21^7 by ^2".$stats[0]->name,
+                "[^2ClipstoneZombies^7]: 3rd > ^21^7 by ^2".$stats[0]->name,
+                "[^2ClipstoneZombies^7]: 4th > ^21^7 by ^2".$stats[0]->name,
+                "[^2ClipstoneZombies^7]: 5th > ^21^7 by ^2".$stats[0]->name,
+                "-------------[ ^2".ucfirst($stats[0]->name)." Records^7 ]-------------",
+            ]
+        ]);
+    }
+
     public function messages(Request $request)
     {
         // Check if the request is valid
