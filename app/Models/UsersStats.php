@@ -13,5 +13,7 @@ class UsersStats extends Model
      */
     protected $fillable = [
         'guid',
+        'name',
+        'score',
     ];
 }

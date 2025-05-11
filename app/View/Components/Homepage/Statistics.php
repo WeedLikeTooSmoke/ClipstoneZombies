@@ -26,31 +26,31 @@ class Statistics extends Component
     public function render(): View|Closure|string
     {
         $highestRound = Cache::remember('highestRound', 10, function () {
-            return UsersStats::max('highest_round') ?? 0;
+             return User::sum('banned');
         });
 
         $zombiesKilled = Cache::remember('zombiesKilled', 10, function () {
-            return UsersStats::sum('kills');
+             return User::sum('banned');
         });
 
         $moneyAccumulated = Cache::remember('moneyAccumulated', 10, function () {
-            return UsersStats::sum('score');
+             return User::sum('banned');
         });
 
         $missionsCompleted = Cache::remember('missionsCompleted', 10, function () {
-            return UsersStats::sum('missions_completed');
+             return User::sum('banned');
         });
 
         $moneyGambled = Cache::remember('moneyGambled', 10, function () {
-            return UsersStats::sum('money_gambled');
+             return User::sum('banned');
         });
 
         $bossesKilled = Cache::remember('bossesKilled', 10, function () {
-            return UsersStats::sum('bosses_killed');
+             return User::sum('banned');
         });
 
         $distanceTraveled = Cache::remember('distanceTraveled', 10, function () {
-            return UsersStats::sum('distance_traveled');
+            return User::sum('banned');
         });
 
         $playersBanned = Cache::remember('playersBanned', 10, function () {

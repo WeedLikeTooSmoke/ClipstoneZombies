@@ -12,6 +12,7 @@ use Illuminate\Support\Number;
 use App\Models\User;
 use App\Models\Join;
 use App\Models\Leaderboard;
+use App\Models\UsersStats;
 
 class VanillaController extends Controller
 {
@@ -34,9 +35,9 @@ class VanillaController extends Controller
         {
             // Add player to joins table for register
             $addJoin = Join::updateOrCreate([
-                'guid' => $guid,
+                'guid' => $data['guid'],
             ],[
-                'name' => $name,
+                'name' => $data['name'],
             ]);
 
             // Return not registered json data
@@ -109,7 +110,19 @@ class VanillaController extends Controller
         // Get only the data we want from the request
         $data = $request->only([
             'guid',
-            'name',
+            'score',
+        ]);
+
+        $player = UsersStats::where('guid', '=', $data['guid'])->get();
+
+        $saveStats = UsersStats::updateOrCreate([
+            'guid' => $data['guid'],
+        ],[
+            'score' => $data['score'] + $player[0]->score,
+        ]);
+
+        return response()->json([
+            'result' => "[^2ClipstoneZombies^7] Your stats have been uploaded and saved!",
         ]);
     }
 
@@ -123,8 +136,8 @@ class VanillaController extends Controller
         // Get a random number to determine what kind of message we want
         if (random_int(0, 1) == 0) {
             // Get the highest round record from the leaderboards table
-            $random = random_int(1, 8);
-            $record = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('players_count', $random)->first();
+            $random = random_int(1, 4);
+            $record = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->where('players_count', $random)->first();
 
             // Check if the record result is null
             if ($record == null) {
