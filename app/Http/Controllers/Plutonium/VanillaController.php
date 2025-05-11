@@ -113,14 +113,17 @@ class VanillaController extends Controller
             'score',
         ]);
 
+        // Get the player who joined the server
         $player = UsersStats::where('guid', '=', $data['guid'])->get();
 
+        // Save stats sent from the server
         $saveStats = UsersStats::updateOrCreate([
             'guid' => $data['guid'],
         ],[
             'score' => $data['score'] + $player[0]->score,
         ]);
 
+        // Return success json result
         return response()->json([
             'result' => "[^2ClipstoneZombies^7] Your stats have been uploaded and saved!",
         ]);
