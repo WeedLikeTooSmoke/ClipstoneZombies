@@ -15,5 +15,16 @@ class UsersStats extends Model
         'guid',
         'name',
         'score',
+        'kills',
+        'downs',
+        'deaths',
+        'suicides',
+        'revives',
+        'headshots',
+        'melee_kills',
+        'grenade_kills',
+        'total_shots',
+        'hits',
+        'sacrifices',
     ];
 }

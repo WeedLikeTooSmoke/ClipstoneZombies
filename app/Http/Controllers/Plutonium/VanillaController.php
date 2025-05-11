@@ -101,7 +101,7 @@ class VanillaController extends Controller
 
         // Return success json result
         return response()->json([
-            'result' => "[^2ClipstoneZombies^7] The current games record has successfully been uploaded!",
+            'result' => "[^2ClipstoneZombies^7] Your record has been uploaded and saved!",
         ]);
     }
 
@@ -111,6 +111,17 @@ class VanillaController extends Controller
         $data = $request->only([
             'guid',
             'score',
+            'kills',
+            'downs',
+            'deaths',
+            'suicides',
+            'revives',
+            'headshots',
+            'melee_kills',
+            'grenade_kills',
+            'total_shots',
+            'hits',
+            'sacrifices',
         ]);
 
         // Get the player who joined the server
