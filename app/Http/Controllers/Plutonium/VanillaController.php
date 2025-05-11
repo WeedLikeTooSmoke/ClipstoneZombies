@@ -84,7 +84,7 @@ class VanillaController extends Controller
         if (!$player)
         {
             // Return not registered json data
-            return self::returnInvalidRequestJson('account');
+            return self::returnInvalidRequestJson('getAccount');
         }
 
         // Return players data
@@ -122,6 +122,34 @@ class VanillaController extends Controller
         // Return success json result
         return response()->json([
             'result' => "[^2ClipstoneZombies^7] Your record has been uploaded and saved!",
+        ]);
+    }
+
+    public function getLeaderboards(Request $request)
+    {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('getLeaderboards');
+        }
+
+        // Get only the data we want from the request
+        $data = $request->only(['map']);
+
+        // Get the top 5 records from the leaderboards table
+        $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->limit(5)->get();
+
+        // Return leaderboards data
+        return response()->json([
+            'leaderboards-details' => [
+                "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
+                "[^2ClipstoneZombies^7]: 1st > ^2". $records[0]->round."^7 by ^2".$records[0]->players,
+                "[^2ClipstoneZombies^7]: 2nd > ^2". $records[1]->round."^7 by ^2".$records[1]->players,
+                "[^2ClipstoneZombies^7]: 3rd > ^2". $records[2]->round."^7 by ^2".$records[2]->players,
+                "[^2ClipstoneZombies^7]: 4th > ^2". $records[3]->round."^7 by ^2".$records[3]->players,
+                "[^2ClipstoneZombies^7]: 5th > ^2". $records[4]->round."^7 by ^2".$records[4]->players,
+                "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
+            ]
         ]);
     }
 

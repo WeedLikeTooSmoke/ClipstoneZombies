@@ -7,7 +7,7 @@ return [
     ],
 
     'settings' => [
-        'level_type' => 2,
+        'level_type' => 1,
     ],
 
     'messages' => [
