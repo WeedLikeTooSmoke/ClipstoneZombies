@@ -1,5 +1,6 @@
 > [!CAUTION]
 > Assets are in a working state for development but are in no way near done!
+> Discord Server: https://discord.gg/REEEc24qE8
 
 > [!TIP]
 > Scripts Repo: https://github.com/WeedLikeTooSmoke/ClipstoneZombies-Scripts<br>
