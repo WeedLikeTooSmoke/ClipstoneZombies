@@ -135,7 +135,7 @@ class VanillaController extends Controller
         ]);
     }
 
-    public function autoMessages(Request $request)
+    public function messages(Request $request)
     {
         // Get only the data we want from the request
         $data = $request->only(['map']);
@@ -162,7 +162,7 @@ class VanillaController extends Controller
 
         // Return random message from config
         return response()->json([
-            'result' => config('plutonium.autoMessages.'.random_int(0, count(config('plutonium.autoMessages')) - 1)),
+            'result' => config('plutonium.messages.'.random_int(0, count(config('plutonium.messages')) - 1)),
         ]);
     }
 }

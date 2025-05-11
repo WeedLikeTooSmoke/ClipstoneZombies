@@ -10,7 +10,7 @@ return [
         'level_type' => 2,
     ],
 
-    'autoMessages' => [
+    'messages' => [
         '[^2ClipstoneZombies^7]: Website > ^2zombies.clipst.one',
         '[^2ClipstoneZombies^7]: Twitter > ^2twitter.com/@ClipstoneZombie',
         '[^2ClipstoneZombies^7]: Discord > ^2discord.gg/ClipstoneZombie',
