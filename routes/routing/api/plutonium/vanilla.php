@@ -11,3 +11,5 @@ Route::post('/api/vanilla/statistics', [VanillaController::class, 'statistics'])
 Route::post('/api/vanilla/getStatistics', [VanillaController::class, 'getStatistics'])->name('api.vanilla.getStatistics');
 
 Route::post('/api/vanilla/messages', [VanillaController::class, 'messages'])->name('api.vanilla.messages');
+Route::post('/api/vanilla/rules', [VanillaController::class, 'rules'])->name('api.vanilla.rules');
+Route::post('/api/vanilla/help', [VanillaController::class, 'help'])->name('api.vanilla.help');

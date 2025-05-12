@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Number;
+use Illuminate\Support\Carbon;
 
 use App\Models\User;
 use App\Models\Join;
@@ -79,6 +80,7 @@ class VanillaController extends Controller
 
         // Get the player who joined the server
         $player = User::where('guid', $data['guid'])->first();
+        $stats = UsersStats::where('guid', $data['guid'])->first();
 
         // Player does not have an account
         if (!$player)
@@ -93,6 +95,8 @@ class VanillaController extends Controller
                 "-------------[ ^2Account^7 ]-------------",
                 "[^2ClipstoneZombies^7]: Level > ^2".self::levelType(config('plutonium.settings.level_type'), $player->level),
                 "[^2ClipstoneZombies^7]: Rank > ^2".self::rankType(config('plutonium.settings.rank_type'), $player->rank),
+                "[^2ClipstoneZombies^7]: Joined > ^2".$player->created_at->diffForHumans(),
+                "[^2ClipstoneZombies^7]: Bank Account > ^2$".number_format($stats->score),
                 "-------------[ ^2Account^7 ]-------------",
             ]
         ]);
@@ -281,6 +285,52 @@ class VanillaController extends Controller
         // Return random message from config
         return response()->json([
             'result' => config('plutonium.messages.'.random_int(0, count(config('plutonium.messages')) - 1)),
+        ]);
+    }
+
+    public function rules(Request $request)
+    {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('rules');
+        }
+
+        // Return Rules for the players
+        return response()->json([
+            'rules-details' => [
+                "-------------[ ^2Clipstone Rules^7 ]-------------",
+                "[^2ClipstoneZombies^7]: Don't be a meanie",
+                "[^2ClipstoneZombies^7]: Don't say slurs",
+                "[^2ClipstoneZombies^7]: Don't block players",
+                "[^2ClipstoneZombies^7]: Don't hold rounds",
+                "[^2ClipstoneZombies^7]: Don't glitch, hack or cheat",
+                "-------------[ ^2Clipstone Rules^7 ]-------------",
+            ]
+        ]);
+    }
+
+    public function help(Request $request)
+    {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('rules');
+        }
+
+        // Get only the data we want from the request
+        $data = $request->only(['page']);
+
+        // Return Rules for the players
+        return response()->json([
+            'help-details' => [
+                "---------[ ^2Clipstone Help Page 1^7 ]---------",
+                "[^2ClipstoneZombies^7]: .account > Show your account details",
+                "[^2ClipstoneZombies^7]: .leaderboard > Show top 5 leaderboard records",
+                "[^2ClipstoneZombies^7]: .rules > Show all Clipstone Zombies rules",
+                "[^2ClipstoneZombies^7]: .stats > Show all of your statistics",
+                "---------[ ^2Clipstone Help Page 1^7 ]---------",
+            ]
         ]);
     }
 }
