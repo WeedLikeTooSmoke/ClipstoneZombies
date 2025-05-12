@@ -95,8 +95,8 @@ class VanillaController extends Controller
                 "-------------[ ^2Account^7 ]-------------",
                 "[^2ClipstoneZombies^7]: Level > ^2".self::levelType(config('plutonium.settings.level_type'), $player->level),
                 "[^2ClipstoneZombies^7]: Rank > ^2".self::rankType(config('plutonium.settings.rank_type'), $player->rank),
+                "[^2ClipstoneZombies^7]: Bank > ^2$".number_format($stats->score),
                 "[^2ClipstoneZombies^7]: Joined > ^2".$player->created_at->diffForHumans(),
-                "[^2ClipstoneZombies^7]: Bank Account > ^2$".number_format($stats->score),
                 "-------------[ ^2Account^7 ]-------------",
             ]
         ]);
@@ -263,7 +263,7 @@ class VanillaController extends Controller
         $data = $request->only(['map']);
 
         // Get a random number to determine what kind of message we want
-        if (random_int(0, 1) === 0) {
+        if (random_int(0, 2) === 0) {
             // Get the highest round record from the leaderboards table
             $random = random_int(1, 4);
             $record = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->where('players_count', $random)->first();
@@ -319,7 +319,7 @@ class VanillaController extends Controller
         }
 
         // Get only the data we want from the request
-        $data = $request->only(['page']);
+        // $data = $request->only(['page']);
 
         // Return Rules for the players
         return response()->json([
