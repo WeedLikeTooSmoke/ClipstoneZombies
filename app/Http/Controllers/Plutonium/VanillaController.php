@@ -228,21 +228,21 @@ class VanillaController extends Controller
         }
 
         // Get only the data we want from the request
-        $data = $request->only(['stats_type']);
+        $data = $request->only(['guid']);
 
-        // Get the top 5 records from the leaderboards table
-        $stats = UsersStats::orderBy($data['stats_type'], 'desc')->limit(5)->get();
+        // Get the player who executed the command
+        $player = UsersStats::where('guid', $data['guid'])->first();
 
-        // Return leaderboards data
+        // Return players statistics
         return response()->json([
             'statistics-details' => [
-                "-------------[ ^2".ucfirst($stats[0]->name)." Records^7 ]-------------",
-                "[^2ClipstoneZombies^7]: 1st > ^21^7 by ^2".$stats[0]->name,
-                "[^2ClipstoneZombies^7]: 2nd > ^21^7 by ^2".$stats[0]->name,
-                "[^2ClipstoneZombies^7]: 3rd > ^21^7 by ^2".$stats[0]->name,
-                "[^2ClipstoneZombies^7]: 4th > ^21^7 by ^2".$stats[0]->name,
-                "[^2ClipstoneZombies^7]: 5th > ^21^7 by ^2".$stats[0]->name,
-                "-------------[ ^2".ucfirst($stats[0]->name)." Records^7 ]-------------",
+                "-------------[ ^2My Statistics^7 ]-------------",
+                "[^2ClipstoneZombies^7]: Kills > ^2".$player->kills,
+                "[^2ClipstoneZombies^7]: Downs > ^2".$player->downs,
+                "[^2ClipstoneZombies^7]: Deaths > ^2".$player->deaths,
+                "[^2ClipstoneZombies^7]: Revives > ^2".$player->revives,
+                "[^2ClipstoneZombies^7]: Headshots > ^2".$player->headshots,
+                "-------------[ ^2My Statistics^7 ]-------------",
             ]
         ]);
     }
