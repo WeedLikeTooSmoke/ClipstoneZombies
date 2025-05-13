@@ -27,6 +27,10 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'name',
         'email',
         'password',
+        'rank',
+        'level',
+        'banned',
+        'color',
     ];
 
     /**
@@ -59,6 +63,6 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@clipst.one') && $this->hasVerifiedEmail();
+        return str_ends_with($this->email, '@clipst.one') && $this->hasVerifiedEmail() && $this->rank >= 6;
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3035d6aed8d45fec495705ea744395f",
+    "content-hash": "16bf5446b42a4459a39a520800d29fbe",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -2104,6 +2104,61 @@
                 }
             ],
             "time": "2025-02-27T13:08:55+00:00"
+        },
+        {
+            "name": "jester/q3tool",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/c9jester/q3tool.git",
+                "reference": "e55f4aa4c0519b860225cf2f02f9beb08887d050"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/c9jester/q3tool/zipball/e55f4aa4c0519b860225cf2f02f9beb08887d050",
+                "reference": "e55f4aa4c0519b860225cf2f02f9beb08887d050",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "q3tool": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jester",
+                    "email": "jester@jestah.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Teknix",
+                    "email": "teknix@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Quake 3 Server interaction for PHP",
+            "homepage": "http://github.com/c9jester/q3tool",
+            "keywords": [
+                "game",
+                "ioq3",
+                "q3",
+                "quake"
+            ],
+            "support": {
+                "email": "jester@jestah.net",
+                "irc": "irc://irc.gamesurge.net/jester",
+                "issues": "http://github.com/c9jester/q3tool/issues",
+                "source": "http://github.com/c9jester/q3tool"
+            },
+            "time": "2013-06-11T18:00:42+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
