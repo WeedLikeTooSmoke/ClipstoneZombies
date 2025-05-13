@@ -30,11 +30,11 @@ class Statistics extends Component
         });
 
         $zombiesKilled = Cache::remember('zombiesKilled', 10, function () {
-             return User::sum('banned');
+             return UsersStats::sum('kills');
         });
 
         $moneyAccumulated = Cache::remember('moneyAccumulated', 10, function () {
-             return User::sum('banned');
+             return UsersStats::sum('score');
         });
 
         $missionsCompleted = Cache::remember('missionsCompleted', 10, function () {
@@ -46,11 +46,11 @@ class Statistics extends Component
         });
 
         $bossesKilled = Cache::remember('bossesKilled', 10, function () {
-             return User::sum('banned');
+             return UsersStats::sum('avogadro_defeated') + UsersStats::sum('prison_brutus_killed') + UsersStats::sum('tomb_mechz_killed');
         });
 
         $distanceTraveled = Cache::remember('distanceTraveled', 10, function () {
-            return User::sum('banned');
+            return UsersStats::sum('distance_traveled');
         });
 
         $playersBanned = Cache::remember('playersBanned', 10, function () {
