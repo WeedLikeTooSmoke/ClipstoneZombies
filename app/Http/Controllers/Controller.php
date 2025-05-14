@@ -42,11 +42,51 @@ abstract class Controller
     public function statsType($collection, $type)
     {
         $match = match ($type) {
-            'kills' =>
-            'revives' =>
-            'downs' =>
-            'deaths' =>
-            'headshots' =>
+            'kills' => 'statistics-details' => [
+                            "-------------[ ^2Top Kill Statistics^7 ]-------------",
+                            "[^2ClipstoneZombies^7]: 1st > ^2".$collection[0]->kills." kills by ".$collection[0]->name,
+                            "[^2ClipstoneZombies^7]: 2nd > ^2".$collection[1]->kills." kills by ".$collection[1]->name,
+                            "[^2ClipstoneZombies^7]: 3rd > ^2".$collection[2]->kills." kills by ".$collection[2]->name,
+                            "[^2ClipstoneZombies^7]: 4th > ^2".$collection[3]->kills." kills by ".$collection[3]->name,
+                            "[^2ClipstoneZombies^7]: 5th > ^2".$collection[4]->kills." kills by ".$collection[4]->name,
+                            "-------------[ ^2Top Kill Statistics^7 ]-------------",
+                        ],
+            'revives' => 'statistics-details' => [
+                            "-------------[ ^2Top Revive Statistics^7 ]-------------",
+                            "[^2ClipstoneZombies^7]: 1st > ^2".$collection[0]->revives." kills by ".$collection[0]->name,
+                            "[^2ClipstoneZombies^7]: 2nd > ^2".$collection[1]->revives." kills by ".$collection[1]->name,
+                            "[^2ClipstoneZombies^7]: 3rd > ^2".$collection[2]->revives." kills by ".$collection[2]->name,
+                            "[^2ClipstoneZombies^7]: 4th > ^2".$collection[3]->revives." kills by ".$collection[3]->name,
+                            "[^2ClipstoneZombies^7]: 5th > ^2".$collection[4]->revives." kills by ".$collection[4]->name,
+                            "-------------[ ^2Top Revive Statistics^7 ]-------------",
+                        ],
+            'downs' => 'statistics-details' => [
+                            "-------------[ ^2Top Downs Statistics^7 ]-------------",
+                            "[^2ClipstoneZombies^7]: 1st > ^2".$collection[0]->downs." kills by ".$collection[0]->name,
+                            "[^2ClipstoneZombies^7]: 2nd > ^2".$collection[1]->downs." kills by ".$collection[1]->name,
+                            "[^2ClipstoneZombies^7]: 3rd > ^2".$collection[2]->downs." kills by ".$collection[2]->name,
+                            "[^2ClipstoneZombies^7]: 4th > ^2".$collection[3]->downs." kills by ".$collection[3]->name,
+                            "[^2ClipstoneZombies^7]: 5th > ^2".$collection[4]->downs." kills by ".$collection[4]->name,
+                            "-------------[ ^2Top Downs Statistics^7 ]-------------",
+                        ],
+            'deaths' => 'statistics-details' => [
+                            "-------------[ ^2Top Death Statistics^7 ]-------------",
+                            "[^2ClipstoneZombies^7]: 1st > ^2".$collection[0]->deaths." kills by ".$collection[0]->name,
+                            "[^2ClipstoneZombies^7]: 2nd > ^2".$collection[1]->deaths." kills by ".$collection[1]->name,
+                            "[^2ClipstoneZombies^7]: 3rd > ^2".$collection[2]->deaths." kills by ".$collection[2]->name,
+                            "[^2ClipstoneZombies^7]: 4th > ^2".$collection[3]->deaths." kills by ".$collection[3]->name,
+                            "[^2ClipstoneZombies^7]: 5th > ^2".$collection[4]->deaths." kills by ".$collection[4]->name,
+                            "-------------[ ^2Top Death Statistics^7 ]-------------",
+                        ],
+            'headshots' => 'statistics-details' => [
+                            "-------------[ ^2Top Headshot Statistics^7 ]-------------",
+                            "[^2ClipstoneZombies^7]: 1st > ^2".$collection[0]->headshots." kills by ".$collection[0]->name,
+                            "[^2ClipstoneZombies^7]: 2nd > ^2".$collection[1]->headshots." kills by ".$collection[1]->name,
+                            "[^2ClipstoneZombies^7]: 3rd > ^2".$collection[2]->headshots." kills by ".$collection[2]->name,
+                            "[^2ClipstoneZombies^7]: 4th > ^2".$collection[3]->headshots." kills by ".$collection[3]->name,
+                            "[^2ClipstoneZombies^7]: 5th > ^2".$collection[4]->headshots." kills by ".$collection[4]->name,
+                            "-------------[ ^2Top Headshot Statistics^7 ]-------------",
+                        ],
         };
 
         return $match;
