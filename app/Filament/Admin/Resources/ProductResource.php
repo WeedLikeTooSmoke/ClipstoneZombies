@@ -30,18 +30,22 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('route')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Section::make('Edit Store Products')
+                    ->description('Edit the store products')
+                    ->schema([
+                    Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('type')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('price')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('route')
+                        ->required()
+                        ->maxLength(255),
+                ])->columns(2),
             ]);
     }
 
