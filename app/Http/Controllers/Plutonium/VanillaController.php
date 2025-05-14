@@ -143,6 +143,11 @@ class VanillaController extends Controller
         // Get the top 5 records from the leaderboards table
         $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->take(5)->get();
 
+        if (count($records) < 5)
+        {
+            return self::returnInvalidRequestJson('getLeaderboards');
+        }
+
         // Return leaderboards data
         return response()->json([
             'leaderboards-details' => [

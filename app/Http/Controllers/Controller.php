@@ -34,8 +34,17 @@ abstract class Controller
             ]);
         }
 
+        if ($type == "getLeaderboards")
+        {
+            return response()->json([
+                'leaderboards-details' => [
+                    "[^2ClipstoneZombies^7] No available records to show at this time...",
+                ]
+            ]);
+        }
+
         return response()->json([
-            'result' => "[^2ClipstoneZombies^7] This request failed to be executed!",
+            'result' => "[^2ClipstoneZombies^7] This request failed to be executed...",
         ]);
     }
 
