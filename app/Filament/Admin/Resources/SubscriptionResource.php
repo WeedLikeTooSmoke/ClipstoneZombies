@@ -30,26 +30,30 @@ class SubscriptionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('stripe_id')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('stripe_status')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('stripe_price')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('quantity')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\DateTimePicker::make('trial_ends_at'),
-                Forms\Components\DateTimePicker::make('ends_at'),
+                Forms\Components\Section::make('Edit Users Subscription Details')
+                    ->description('Edit the users subscription details')
+                    ->schema([
+                    Forms\Components\TextInput::make('user_id')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\TextInput::make('type')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('stripe_id')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('stripe_status')
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('stripe_price')
+                        ->maxLength(255)
+                        ->default(null),
+                    Forms\Components\TextInput::make('quantity')
+                        ->numeric()
+                        ->default(null),
+                    Forms\Components\DateTimePicker::make('trial_ends_at'),
+                    Forms\Components\DateTimePicker::make('ends_at'),
+                ])->columns(2),
             ]);
     }
 
