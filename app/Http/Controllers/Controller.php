@@ -39,6 +39,19 @@ abstract class Controller
         ]);
     }
 
+    public function statsType($collection, $type)
+    {
+        $match = match ($type) {
+            'kills' =>
+            'revives' =>
+            'downs' =>
+            'deaths' =>
+            'headshots' =>
+        };
+
+        return $match;
+    }
+
     public function roundType($players)
     {
         $match = match ($players) {
