@@ -263,19 +263,11 @@ class VanillaController extends Controller
         $data = $request->only(['type']);
 
         // Get the player who executed the command
-        $player = UsersStats::orderBy($data['type'], 'desc')->limit(5)->get();
+        $players = UsersStats::orderBy($data['type'], 'desc')->limit(5)->get();
 
         // Return players statistics
         return response()->json([
-            'statistics-details' => [
-                "-------------[ ^2Top Statistics^7 ]-------------",
-                "[^2ClipstoneZombies^7]: 1st > ^2".$player->kills,
-                "[^2ClipstoneZombies^7]: 2nd > ^2".$player->downs,
-                "[^2ClipstoneZombies^7]: 3rd > ^2".$player->deaths,
-                "[^2ClipstoneZombies^7]: 4th > ^2".$player->revives,
-                "[^2ClipstoneZombies^7]: 5th > ^2".$player->headshots,
-                "-------------[ ^2Top Statistics^7 ]-------------",
-            ]
+            self::statsType($players, $data['type']);
         ]);
     }
 
