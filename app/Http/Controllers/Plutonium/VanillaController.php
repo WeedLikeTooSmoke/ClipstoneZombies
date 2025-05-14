@@ -141,7 +141,7 @@ class VanillaController extends Controller
         $data = $request->only(['map']);
 
         // Get the top 5 records from the leaderboards table
-        $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->limit(5)->get();
+        $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->take(5)->get();
 
         // Return leaderboards data
         return response()->json([
@@ -263,7 +263,7 @@ class VanillaController extends Controller
         $data = $request->only(['type']);
 
         // Get the player who executed the command
-        $players = UsersStats::orderBy($data['type'], 'desc')->limit(5)->get();
+        $players = UsersStats::orderBy($data['type'], 'desc')->take(5)->get();
 
         // Return players statistics
         return response()->json([
