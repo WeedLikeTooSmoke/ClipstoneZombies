@@ -251,26 +251,6 @@ class VanillaController extends Controller
         ]);
     }
 
-    public function getTopStatistics(Request $request)
-    {
-        // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
-        {
-            return self::returnInvalidRequestJson('getStatistics');
-        }
-
-        // Get only the data we want from the request
-        $data = $request->only(['type']);
-
-        // Get the player who executed the command
-        $players = UsersStats::orderBy($data['type'], 'desc')->take(5)->get();
-
-        // Return players statistics
-        return response()->json([
-            self::statsType($players, $data['type']);
-        ]);
-    }
-
     public function messages(Request $request)
     {
         // Check if the request is valid
