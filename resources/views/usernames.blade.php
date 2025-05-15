@@ -9,6 +9,8 @@
         <x-global.navigator/>
         <x-global.header/>
 
+        <x-store.usernames/>
+
         <x-global.footer/>
     </body>
 </html>
