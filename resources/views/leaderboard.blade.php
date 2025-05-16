@@ -9,6 +9,8 @@
         <x-global.navigator/>
         <x-global.header/>
 
+        <livewire:leaderboards/>
+
         <x-global.footer/>
     </body>
 </html>

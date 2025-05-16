@@ -3,7 +3,7 @@
 Route::get('/', function () { return view('homepage'); })->name("homepage");
 Route::get('/newspaper', function () { return view('newspaper'); })->name("newspaper");
 Route::get('/search', function () { return view('search'); })->name("search");
-Route::get('/leaderboard', function () { return view('leaderboard'); })->name("leaderboard");
+Route::get('/leaderboards', function () { return view('leaderboard'); })->name("leaderboard");
 Route::get('/statsleaderboard', function () { return view('statsleaderboard'); })->name("statsleaderboard");
 Route::get('/usernames', function () { return view('usernames'); })->name("usernames");
 Route::get('/ranks', function () { return view('ranks'); })->name("ranks");

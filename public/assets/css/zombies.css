@@ -306,6 +306,37 @@ header img {
 }
 
 /*
+ * Leaderboard
+ */
+.leaderboard {
+    width: 100%;
+    margin-top: 200px;
+}
+.leaderboard table {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--primary-color);
+}
+.leaderboard table th {
+    padding: 25px;
+}
+.leaderboard table th i {
+    margin-left: 5px;
+    transition: 0.1s;
+}
+.leaderboard table th i:hover {
+    color: var(--accent-color);
+    cursor: pointer;
+}
+.leaderboard table td {
+    padding-left: 25px;
+    padding-bottom: 25px;
+}
+
+/*
  * Usernames
  */
 .usernames {
