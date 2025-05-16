@@ -9,10 +9,12 @@ use App\Models\Leaderboard;
 class Leaderboards extends Component
 {
     use WithPagination;
+
+    public $type = 1;
     public function render()
     {
         return view('livewire.leaderboards', [
-            'records' => Leaderboard::orderBy('round', 'desc')->paginate(10),
+            'records' => Leaderboard::where('players_count', $this->type)->orderBy('round', 'desc')->paginate(10),
         ]);
     }
 }
