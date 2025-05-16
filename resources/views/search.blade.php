@@ -9,6 +9,8 @@
         <x-global.navigator/>
         <x-global.header/>
 
+        <livewire:search/>
+
         <x-global.footer/>
     </body>
 </html>

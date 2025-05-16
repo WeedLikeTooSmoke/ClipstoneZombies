@@ -9,7 +9,6 @@
                 <a>Homepage <i class="fa-solid fa-chevron-up"></i></a>
                 <div class="dropdown-items">
                     <a href="/" wire:navigate><i class="fa-solid fa-house"></i> Homepage</a>
-                    <a href="/newspaper" wire:navigate><i class="fa-solid fa-newspaper"></i> Newspaper</a>
                     <div class="divider"></div>
                     <a href="/" target="_blank"><i class="fa-brands fa-square-facebook"></i> Facebook Page</a>
                     <a href="/" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube Channel</a>
