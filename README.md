@@ -5,7 +5,6 @@
 > [!IMPORTANT]
 > Install Composer<br>
 > Install PHP v8.2 or greater<br><br>
-> 
 > Rename .env.example to .env<br>
 > Edit the database credentials in .env to match your database<br>
 > Run 'composer install' in cli within the project folder<br>
