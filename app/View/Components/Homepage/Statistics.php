@@ -26,35 +26,35 @@ class Statistics extends Component
      */
     public function render(): View|Closure|string
     {
-        $highestRound = Cache::remember('highestRound', 10, function () {
+        $highestRound = Cache::remember('highestRound', 300, function () {
              return Leaderboard::max('round');
         });
 
-        $zombiesKilled = Cache::remember('zombiesKilled', 10, function () {
+        $zombiesKilled = Cache::remember('zombiesKilled', 300, function () {
              return UsersStats::sum('kills');
         });
 
-        $moneyAccumulated = Cache::remember('moneyAccumulated', 10, function () {
+        $moneyAccumulated = Cache::remember('moneyAccumulated', 300, function () {
              return "£".number_format(UsersStats::sum('score'));
         });
 
-        $missionsCompleted = Cache::remember('missionsCompleted', 10, function () {
+        $missionsCompleted = Cache::remember('missionsCompleted', 300, function () {
              return User::sum('banned');
         });
 
-        $moneyGambled = Cache::remember('moneyGambled', 10, function () {
+        $moneyGambled = Cache::remember('moneyGambled', 300, function () {
              return User::sum('banned');
         });
 
-        $bossesKilled = Cache::remember('bossesKilled', 10, function () {
+        $bossesKilled = Cache::remember('bossesKilled', 300, function () {
              return UsersStats::sum('avogadro_defeated') + UsersStats::sum('prison_brutus_killed') + UsersStats::sum('tomb_mechz_killed');
         });
 
-        $distanceTraveled = Cache::remember('distanceTraveled', 10, function () {
+        $distanceTraveled = Cache::remember('distanceTraveled', 300, function () {
             return number_format(UsersStats::sum('distance_traveled') * 0.0254);
         });
 
-        $playersBanned = Cache::remember('playersBanned', 10, function () {
+        $playersBanned = Cache::remember('playersBanned', 300, function () {
             return User::sum('banned');
         });
 
