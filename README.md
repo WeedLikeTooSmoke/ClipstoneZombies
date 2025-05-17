@@ -1,6 +1,6 @@
 > [!CAUTION]
 > Assets are in a working state for development but are in no way near done!<br>
-> Discord Server: https://discord.gg/REEEc24qE8
+> Discord Server: https://discord.gg/SKXMmG485u
 
 > [!IMPORTANT]
 > Install Composer<br>
