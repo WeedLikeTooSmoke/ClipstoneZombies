@@ -93,7 +93,7 @@ class VanillaController extends Controller
         return response()->json([
             'account-details' => [
                 "-------------[ ^2Account^7 ]-------------",
-                "[^2ClipstoneZombies^7]: Level > ^2".self::levelType(config('plutonium.settings.level_type'), $player->level),
+                "[^2ClipstoneZombies^7]: Level > ^2".number_format(self::levelType(config('plutonium.settings.level_type'), $player->level)),
                 "[^2ClipstoneZombies^7]: Rank > ^2".self::rankType(config('plutonium.settings.rank_type'), $player->rank),
                 "[^2ClipstoneZombies^7]: Bank > ^2$".number_format($stats->score),
                 "[^2ClipstoneZombies^7]: Joined > ^2".$player->created_at->diffForHumans(),
@@ -246,11 +246,11 @@ class VanillaController extends Controller
         return response()->json([
             'statistics-details' => [
                 "-------------[ ^2My Statistics^7 ]-------------",
-                "[^2ClipstoneZombies^7]: Kills > ^2".$player->kills,
-                "[^2ClipstoneZombies^7]: Downs > ^2".$player->downs,
-                "[^2ClipstoneZombies^7]: Deaths > ^2".$player->deaths,
-                "[^2ClipstoneZombies^7]: Revives > ^2".$player->revives,
-                "[^2ClipstoneZombies^7]: Headshots > ^2".$player->headshots,
+                "[^2ClipstoneZombies^7]: Kills > ^2".number_format($player->kills),
+                "[^2ClipstoneZombies^7]: Downs > ^2".number_format($player->downs),
+                "[^2ClipstoneZombies^7]: Deaths > ^2".number_format($player->deaths),
+                "[^2ClipstoneZombies^7]: Revives > ^2".number_format($player->revives),
+                "[^2ClipstoneZombies^7]: Headshots > ^2".number_format($player->headshots),
                 "-------------[ ^2My Statistics^7 ]-------------",
             ]
         ]);
