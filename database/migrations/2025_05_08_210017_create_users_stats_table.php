@@ -73,6 +73,9 @@ return new class extends Migration
             $table->bigInteger('buried_ghost_killed')->default(0);
             $table->bigInteger('tomb_mechz_killed')->default(0);
             $table->bigInteger('tomb_dig')->default(0);
+            $table->bigInteger('money_gambled')->default(0);
+            $table->bigInteger('missions_completed')->default(0);
+            $table->bigInteger('bosses_killed')->default(0);
             $table->timestamps();
         });
     }
