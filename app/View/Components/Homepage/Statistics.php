@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cache;
 
 use App\Models\User;
 use App\Models\UsersStats;
+use App\Models\Leaderboard;
 
 class Statistics extends Component
 {
@@ -26,7 +27,7 @@ class Statistics extends Component
     public function render(): View|Closure|string
     {
         $highestRound = Cache::remember('highestRound', 10, function () {
-             return User::sum('banned');
+             return Leaderboard::max('round');
         });
 
         $zombiesKilled = Cache::remember('zombiesKilled', 10, function () {
@@ -34,7 +35,7 @@ class Statistics extends Component
         });
 
         $moneyAccumulated = Cache::remember('moneyAccumulated', 10, function () {
-             return UsersStats::sum('score');
+             return "£".number_format(UsersStats::sum('score'));
         });
 
         $missionsCompleted = Cache::remember('missionsCompleted', 10, function () {
@@ -50,7 +51,7 @@ class Statistics extends Component
         });
 
         $distanceTraveled = Cache::remember('distanceTraveled', 10, function () {
-            return UsersStats::sum('distance_traveled');
+            return number_format(UsersStats::sum('distance_traveled') * 0.0254);
         });
 
         $playersBanned = Cache::remember('playersBanned', 10, function () {
