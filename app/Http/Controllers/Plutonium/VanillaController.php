@@ -256,6 +256,41 @@ class VanillaController extends Controller
         ]);
     }
 
+    public function getTopStats(Request $request)
+    {
+        $data = $request->only(['stats_type']);
+
+        $stats = UsersStats::orderBy($data['stats_type'], 'desc')->limit(5)->get();
+        
+        $match = match ($data['stats_type']) 
+        {
+            'kills' => response()->json([
+                'topstatistics-details' => [
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->kills)." Kills by ".$stats[0]->name,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->kills)." Kills by ".$stats[1]->name,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->kills)." Kills by ".$stats[2]->name,
+                    "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->kills)." Kills by ".$stats[3]->name,
+                    "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->kills)." Kills by ".$stats[4]->name,
+                    "-------------[ ^2Top Statistics^7 ]-------------",                  
+                ]                 
+            ]);
+            'downs' => response()->json([
+                'topstatistics-details' => [
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->downs)." Downs by ".$stats[0]->name,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->downs)." Downs by ".$stats[1]->name,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->downs)." Downs by ".$stats[2]->name,
+                    "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->downs)." Downs by ".$stats[3]->name,
+                    "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->downs)." Downs by ".$stats[4]->name,
+                    "-------------[ ^2Top Statistics^7 ]-------------",                  
+                ]                 
+            ]);
+        }
+
+        return $match; 
+    }
+
     public function messages(Request $request)
     {
         // Check if the request is valid
