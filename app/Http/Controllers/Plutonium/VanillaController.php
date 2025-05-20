@@ -286,6 +286,39 @@ class VanillaController extends Controller
                     "-------------[ ^2Top Statistics^7 ]-------------",                  
                 ]                 
             ]);
+            'deaths' => response()->json([
+                'topstatistics-details' => [
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->deaths)." Deaths by ".$stats[0]->name,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->deaths)." Deaths by ".$stats[1]->name,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->deaths)." Deaths by ".$stats[2]->name,
+                    "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->deaths)." Deaths by ".$stats[3]->name,
+                    "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->deaths)." Deaths by ".$stats[4]->name,
+                    "-------------[ ^2Top Statistics^7 ]-------------",                  
+                ]                 
+            ]);
+            'revives' => response()->json([
+                'topstatistics-details' => [
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->revives)." Revives by ".$stats[0]->name,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->revives)." Revives by ".$stats[1]->name,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->revives)." Revives by ".$stats[2]->name,
+                    "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->revives)." Revives by ".$stats[3]->name,
+                    "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->revives)." Revives by ".$stats[4]->name,
+                    "-------------[ ^2Top Statistics^7 ]-------------",                  
+                ]                 
+            ]);
+            'money' => response()->json([
+                'topstatistics-details' => [
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->score)." Money by ".$stats[0]->name,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->score)." Money by ".$stats[1]->name,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->score)." Money by ".$stats[2]->name,
+                    "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->score)." Money by ".$stats[3]->name,
+                    "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->score)." Money by ".$stats[4]->name,
+                    "-------------[ ^2Top Statistics^7 ]-------------",                  
+                ]                 
+            ]);
         }
 
         return $match; 
