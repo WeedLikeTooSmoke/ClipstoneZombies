@@ -258,10 +258,19 @@ class VanillaController extends Controller
 
     public function getTopStats(Request $request)
     {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('getStatistics');
+        }
+
+        // Get only the data we want from the request
         $data = $request->only(['stats_type']);
 
+        // Get the top statistics from the given statistics type
         $stats = UsersStats::orderBy($data['stats_type'], 'desc')->limit(5)->get();
-        
+
+        // Match the statistic from the given statistics type
         $match = match ($data['stats_type']) 
         {
             'kills' => response()->json([
@@ -321,6 +330,7 @@ class VanillaController extends Controller
             ]);
         }
 
+        // Return the statistics matched from the match method
         return $match; 
     }
 
