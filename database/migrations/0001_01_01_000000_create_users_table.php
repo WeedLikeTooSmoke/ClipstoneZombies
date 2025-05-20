@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('level')->default(1);
             $table->integer('banned')->default(0);
             $table->string('color')->default('7');
+            $table->string('language')->default('en');
             $table->rememberToken();
             $table->timestamps();
         });
