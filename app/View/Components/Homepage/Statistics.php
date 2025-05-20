@@ -39,15 +39,15 @@ class Statistics extends Component
         });
 
         $missionsCompleted = Cache::remember('missionsCompleted', 300, function () {
-             return User::sum('banned');
+             return UsersStats::sum('missions_completed');
         });
 
         $moneyGambled = Cache::remember('moneyGambled', 300, function () {
-             return User::sum('banned');
+             return UsersStats::sum('money_gambled');
         });
 
         $bossesKilled = Cache::remember('bossesKilled', 300, function () {
-             return UsersStats::sum('avogadro_defeated') + UsersStats::sum('prison_brutus_killed') + UsersStats::sum('tomb_mechz_killed');
+             return UsersStats::sum('bosses_killed');
         });
 
         $distanceTraveled = Cache::remember('distanceTraveled', 300, function () {

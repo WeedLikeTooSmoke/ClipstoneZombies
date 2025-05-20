@@ -442,9 +442,7 @@ class VanillaController extends Controller
 
         return response()->json([
             'ban-details' => [
-                "---------[ ^2Clipstone Ban^7 ]---------",
                 "[^2ClipstoneZombies^7]: ".$data['player_name']." has been banned",
-                "---------[ ^2Clipstone Ban^7 ]---------",
             ]
         ]);
     }
