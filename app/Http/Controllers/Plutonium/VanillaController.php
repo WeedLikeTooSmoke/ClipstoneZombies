@@ -93,7 +93,7 @@ class VanillaController extends Controller
         return response()->json([
             'account-details' => [
                 "-------------[ ^2Account^7 ]-------------",
-                "[^2ClipstoneZombies^7]: Level > ^2".number_format(self::levelType(config('plutonium.settings.level_type'), $player->level)),
+                "[^2ClipstoneZombies^7]: Level > ^2".self::levelType(config('plutonium.settings.level_type'), $player->level),
                 "[^2ClipstoneZombies^7]: Rank > ^2".self::rankType(config('plutonium.settings.rank_type'), $player->rank),
                 "[^2ClipstoneZombies^7]: Bank > ^2$".number_format($stats->score),
                 "[^2ClipstoneZombies^7]: Joined > ^2".$player->created_at->diffForHumans(),
@@ -426,10 +426,10 @@ class VanillaController extends Controller
         }
 
         // Get only the requested data from the request
-        $data = $request->only(['player_guid', 'staff_guid']);
+        $data = $request->only(['staff_guid', 'player_name']);
 
         // Get the users data making the request
-        $staff = User::where('guid', $data['staff_guid'])->get();
+        $staff = User::where('guid', $data['staff_guid'])->first();
 
         // Check if the user making the request is a high enough rank
         if ($staff->rank <= 5)
@@ -438,6 +438,14 @@ class VanillaController extends Controller
         }
 
         // Set the player being banned to be banned
-        $player = User::where('guid', $data['player'])->update(['banned' => 1]);
+        $player = User::where('name', 'like', '%'.$data['player_name'].'%')->update(['banned' => 1]);
+
+        return response()->json([
+            'ban-details' => [
+                "---------[ ^2Clipstone Ban^7 ]---------",
+                "[^2ClipstoneZombies^7]: ".$data['player_name']." has been banned",
+                "---------[ ^2Clipstone Ban^7 ]---------",
+            ]
+        ]);
     }
 }

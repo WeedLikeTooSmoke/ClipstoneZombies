@@ -14,3 +14,5 @@ Route::post('/api/vanilla/getTopStatistics', [VanillaController::class, 'getTopS
 Route::post('/api/vanilla/messages', [VanillaController::class, 'messages'])->name('api.vanilla.messages');
 Route::post('/api/vanilla/rules', [VanillaController::class, 'rules'])->name('api.vanilla.rules');
 Route::post('/api/vanilla/help', [VanillaController::class, 'help'])->name('api.vanilla.help');
+
+Route::post('/api/vanilla/banPlayer', [VanillaController::class, 'banPlayer'])->name('api.vanilla.banPlayer');
