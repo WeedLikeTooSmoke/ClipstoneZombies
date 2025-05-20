@@ -256,7 +256,7 @@ class VanillaController extends Controller
         ]);
     }
 
-    public function getTopStats(Request $request)
+    public function getTopStatistics(Request $request)
     {
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
@@ -271,7 +271,7 @@ class VanillaController extends Controller
         $stats = UsersStats::orderBy($data['stats_type'], 'desc')->limit(5)->get();
 
         // Match the statistic from the given statistics type
-        $match = match ($data['stats_type']) 
+        $match = match ($data['stats_type'])
         {
             'kills' => response()->json([
                 'topstatistics-details' => [
@@ -281,9 +281,9 @@ class VanillaController extends Controller
                     "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->kills)." Kills by ".$stats[2]->name,
                     "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->kills)." Kills by ".$stats[3]->name,
                     "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->kills)." Kills by ".$stats[4]->name,
-                    "-------------[ ^2Top Statistics^7 ]-------------",                  
-                ]                 
-            ]);
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                ]
+            ]),
             'downs' => response()->json([
                 'topstatistics-details' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
@@ -292,9 +292,9 @@ class VanillaController extends Controller
                     "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->downs)." Downs by ".$stats[2]->name,
                     "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->downs)." Downs by ".$stats[3]->name,
                     "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->downs)." Downs by ".$stats[4]->name,
-                    "-------------[ ^2Top Statistics^7 ]-------------",                  
-                ]                 
-            ]);
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                ]
+            ]),
             'deaths' => response()->json([
                 'topstatistics-details' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
@@ -303,9 +303,9 @@ class VanillaController extends Controller
                     "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->deaths)." Deaths by ".$stats[2]->name,
                     "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->deaths)." Deaths by ".$stats[3]->name,
                     "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->deaths)." Deaths by ".$stats[4]->name,
-                    "-------------[ ^2Top Statistics^7 ]-------------",                  
-                ]                 
-            ]);
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                ]
+            ]),
             'revives' => response()->json([
                 'topstatistics-details' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
@@ -314,24 +314,24 @@ class VanillaController extends Controller
                     "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->revives)." Revives by ".$stats[2]->name,
                     "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->revives)." Revives by ".$stats[3]->name,
                     "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->revives)." Revives by ".$stats[4]->name,
-                    "-------------[ ^2Top Statistics^7 ]-------------",                  
-                ]                 
-            ]);
-            'money' => response()->json([
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                ]
+            ]),
+            'score' => response()->json([
                 'topstatistics-details' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
-                    "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->score)." Money by ".$stats[0]->name,
-                    "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->score)." Money by ".$stats[1]->name,
-                    "[^2ClipstoneZombies^7]: 3rd > ^2".number_format($stats[2]->score)." Money by ".$stats[2]->name,
-                    "[^2ClipstoneZombies^7]: 4th > ^2".number_format($stats[3]->score)." Money by ".$stats[3]->name,
-                    "[^2ClipstoneZombies^7]: 5th > ^2".number_format($stats[4]->score)." Money by ".$stats[4]->name,
-                    "-------------[ ^2Top Statistics^7 ]-------------",                  
-                ]                 
-            ]);
-        }
+                    "[^2ClipstoneZombies^7]: 1st > ^2£".number_format($stats[0]->score)." Money by ".$stats[0]->name,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2£".number_format($stats[1]->score)." Money by ".$stats[1]->name,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2£".number_format($stats[2]->score)." Money by ".$stats[2]->name,
+                    "[^2ClipstoneZombies^7]: 4th > ^2£".number_format($stats[3]->score)." Money by ".$stats[3]->name,
+                    "[^2ClipstoneZombies^7]: 5th > ^2£".number_format($stats[4]->score)." Money by ".$stats[4]->name,
+                    "-------------[ ^2Top Statistics^7 ]-------------",
+                ]
+            ]),
+        };
 
         // Return the statistics matched from the match method
-        return $match; 
+        return $match;
     }
 
     public function messages(Request $request)
