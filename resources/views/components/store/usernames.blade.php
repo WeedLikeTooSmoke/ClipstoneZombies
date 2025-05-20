@@ -1,9 +1,9 @@
 <div class="container page">
     <div class="homepage-serverlist-header">
-        Clipstone Zombies Serverlist
+        Clipstone Zombies Coloured Username Packages
     </div>
     <div class="homepage-serverlist-description">
-        Showcasing some of Clipstone Zombies servers
+        Showcasing some of Clipstone Zombies coloured username packages that help the servers upkeep
     </div>
     <div class="usernames">
         <div class="usernames-placeholder">

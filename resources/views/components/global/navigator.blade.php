@@ -34,7 +34,7 @@
                     <a href="/ranks" wire:navigate><i class="fa-solid fa-star"></i> Player Ranks</a>
                     <a href="/money" wire:navigate><i class="fa-solid fa-money-bill"></i> Bank Money</a>
                     <div class="divider"></div>
-                    <a href="/server" wire:navigate><i class="fa-solid fa-server"></i> Private Servers</a>
+                    <a href="/servers" wire:navigate><i class="fa-solid fa-server"></i> Private Servers</a>
                 </div>
             </div>
 
