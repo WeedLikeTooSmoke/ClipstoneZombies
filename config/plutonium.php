@@ -27,4 +27,10 @@ return [
         '[^2ClipstoneZombies^7]: Rule > Don\'t glitch, hack or cheat',
         '[^2ClipstoneZombies^7]: Reddit > ^2reddit.com/r/ClipstoneZombie',
     ],
+
+    'language' => [
+        'en' => [
+            'messages' => [],
+        ],
+    ],
 ];
