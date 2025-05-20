@@ -91,7 +91,7 @@ class VanillaController extends Controller
 
         // Return players data
         return response()->json([
-            'account-details' => [
+            'result' => [
                 "-------------[ ^2Account^7 ]-------------",
                 "[^2ClipstoneZombies^7]: Level > ^2".self::levelType(config('plutonium.settings.level_type'), $player->level),
                 "[^2ClipstoneZombies^7]: Rank > ^2".self::rankType(config('plutonium.settings.rank_type'), $player->rank),
@@ -150,7 +150,7 @@ class VanillaController extends Controller
 
         // Return leaderboards data
         return response()->json([
-            'leaderboards-details' => [
+            'result' => [
                 "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
                 "[^2ClipstoneZombies^7]: 1st > ^2". $records[0]->round."^7 by ^2".$records[0]->players,
                 "[^2ClipstoneZombies^7]: 2nd > ^2". $records[1]->round."^7 by ^2".$records[1]->players,
@@ -244,7 +244,7 @@ class VanillaController extends Controller
 
         // Return players statistics
         return response()->json([
-            'statistics-details' => [
+            'result' => [
                 "-------------[ ^2My Statistics^7 ]-------------",
                 "[^2ClipstoneZombies^7]: Kills > ^2".number_format($player->kills),
                 "[^2ClipstoneZombies^7]: Downs > ^2".number_format($player->downs),
@@ -274,7 +274,7 @@ class VanillaController extends Controller
         $match = match ($data['stats_type'])
         {
             'kills' => response()->json([
-                'topstatistics-details' => [
+                'result' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
                     "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->kills)." Kills by ".$stats[0]->name,
                     "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->kills)." Kills by ".$stats[1]->name,
@@ -285,7 +285,7 @@ class VanillaController extends Controller
                 ]
             ]),
             'downs' => response()->json([
-                'topstatistics-details' => [
+                'result' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
                     "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->downs)." Downs by ".$stats[0]->name,
                     "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->downs)." Downs by ".$stats[1]->name,
@@ -296,7 +296,7 @@ class VanillaController extends Controller
                 ]
             ]),
             'deaths' => response()->json([
-                'topstatistics-details' => [
+                'result' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
                     "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->deaths)." Deaths by ".$stats[0]->name,
                     "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->deaths)." Deaths by ".$stats[1]->name,
@@ -307,7 +307,7 @@ class VanillaController extends Controller
                 ]
             ]),
             'revives' => response()->json([
-                'topstatistics-details' => [
+                'result' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
                     "[^2ClipstoneZombies^7]: 1st > ^2".number_format($stats[0]->revives)." Revives by ".$stats[0]->name,
                     "[^2ClipstoneZombies^7]: 2nd > ^2".number_format($stats[1]->revives)." Revives by ".$stats[1]->name,
@@ -318,7 +318,7 @@ class VanillaController extends Controller
                 ]
             ]),
             'score' => response()->json([
-                'topstatistics-details' => [
+                'result' => [
                     "-------------[ ^2Top Statistics^7 ]-------------",
                     "[^2ClipstoneZombies^7]: 1st > ^2£".number_format($stats[0]->score)." Money by ".$stats[0]->name,
                     "[^2ClipstoneZombies^7]: 2nd > ^2£".number_format($stats[1]->score)." Money by ".$stats[1]->name,
@@ -381,7 +381,7 @@ class VanillaController extends Controller
 
         // Return Rules for the players
         return response()->json([
-            'rules-details' => [
+            'result' => [
                 "-------------[ ^2Clipstone Rules^7 ]-------------",
                 "[^2ClipstoneZombies^7]: Don't be a meanie",
                 "[^2ClipstoneZombies^7]: Don't say slurs",
@@ -406,7 +406,7 @@ class VanillaController extends Controller
 
         // Return Rules for the players
         return response()->json([
-            'help-details' => [
+            'result' => [
                 "---------[ ^2Clipstone Help Page 1^7 ]---------",
                 "[^2ClipstoneZombies^7]: .account > Show your account details",
                 "[^2ClipstoneZombies^7]: .leaderboard > Show top 5 leaderboard records",
@@ -434,14 +434,14 @@ class VanillaController extends Controller
         // Check if the user making the request is a high enough rank
         if ($staff->rank <= 5)
         {
-            return self::returnInvalidRequestJson('banPlayer');
+            return self::returnInvalidRequestJson('notStaff');
         }
 
         // Set the player being banned to be banned
         $player = User::where('name', 'like', '%'.$data['player_name'].'%')->update(['banned' => 1]);
 
         return response()->json([
-            'ban-details' => [
+            'result' => [
                 "[^2ClipstoneZombies^7]: ".$data['player_name']." has been banned",
             ]
         ]);

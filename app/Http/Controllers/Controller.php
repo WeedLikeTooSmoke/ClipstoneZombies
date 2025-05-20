@@ -37,7 +37,16 @@ abstract class Controller
         if ($type == "getLeaderboards")
         {
             return response()->json([
-                'leaderboards-details' => [
+                'result' => [
+                    "[^2ClipstoneZombies^7] No available records to show at this time...",
+                ]
+            ]);
+        }
+
+        if ($type == "notStaff")
+        {
+            return response()->json([
+                'result' => [
                     "[^2ClipstoneZombies^7] No available records to show at this time...",
                 ]
             ]);
