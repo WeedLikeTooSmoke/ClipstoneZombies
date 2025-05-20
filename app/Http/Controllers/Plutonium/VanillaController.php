@@ -416,4 +416,28 @@ class VanillaController extends Controller
             ]
         ]);
     }
+
+    public function banPlayer(Request $request)
+    {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        {
+            return self::returnInvalidRequestJson('banPlayer');
+        }
+
+        // Get only the requested data from the request
+        $data = $request->only(['player_guid', 'staff_guid']);
+
+        // Get the users data making the request
+        $staff = User::where('guid', $data['staff_guid'])->get();
+
+        // Check if the user making the request is a high enough rank
+        if ($staff->rank <= 5)
+        {
+            return self::returnInvalidRequestJson('banPlayer');
+        }
+
+        // Set the player being banned to be banned
+        $player = User::where('guid', $data['player'])->update(['banned' => 1]);
+    }
 }
