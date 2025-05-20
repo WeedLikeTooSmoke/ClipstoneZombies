@@ -8,10 +8,43 @@
     <div class="usernames">
         <div class="usernames-placeholder">
             <div class="usernames-placeholder-header">
-                £1 Blue Username Color
+                £1 Black Username Color
             </div>
             <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
+                You will be given a black username in-game for the duration of your subscription plan.
+            </div>
+            <a>
+                Buy
+            </a>
+        </div>
+        <div class="usernames-placeholder">
+            <div class="usernames-placeholder-header">
+                £1 Red Username Color
+            </div>
+            <div class="usernames-placeholder-description">
+                You will be given a red username in-game for the duration of your subscription plan.
+            </div>
+            <a>
+                Buy
+            </a>
+        </div>
+        <div class="usernames-placeholder">
+            <div class="usernames-placeholder-header">
+                £1 Green Username Color
+            </div>
+            <div class="usernames-placeholder-description">
+                You will be given a green username in-game for the duration of your subscription plan.
+            </div>
+            <a>
+                Buy
+            </a>
+        </div>
+        <div class="usernames-placeholder">
+            <div class="usernames-placeholder-header">
+                £1 Yellow Username Color
+            </div>
+            <div class="usernames-placeholder-description">
+                You will be given a yellow username in-game for the duration of your subscription plan.
             </div>
             <a>
                 Buy
@@ -30,10 +63,10 @@
         </div>
         <div class="usernames-placeholder">
             <div class="usernames-placeholder-header">
-                £1 Blue Username Color
+                £1 Cyan Username Color
             </div>
             <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
+                You will be given a cyan username in-game for the duration of your subscription plan.
             </div>
             <a>
                 Buy
@@ -41,54 +74,10 @@
         </div>
         <div class="usernames-placeholder">
             <div class="usernames-placeholder-header">
-                £1 Blue Username Color
+                £1 Pink Username Color
             </div>
             <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
-            </div>
-            <a>
-                Buy
-            </a>
-        </div>
-        <div class="usernames-placeholder">
-            <div class="usernames-placeholder-header">
-                £1 Blue Username Color
-            </div>
-            <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
-            </div>
-            <a>
-                Buy
-            </a>
-        </div>
-        <div class="usernames-placeholder">
-            <div class="usernames-placeholder-header">
-                £1 Blue Username Color
-            </div>
-            <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
-            </div>
-            <a>
-                Buy
-            </a>
-        </div>
-        <div class="usernames-placeholder">
-            <div class="usernames-placeholder-header">
-                £1 Blue Username Color
-            </div>
-            <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
-            </div>
-            <a>
-                Buy
-            </a>
-        </div>
-        <div class="usernames-placeholder">
-            <div class="usernames-placeholder-header">
-                £1 Blue Username Color
-            </div>
-            <div class="usernames-placeholder-description">
-                You will be given a blue username in-game for the duration of your subscription plan.
+                You will be given a pink username in-game for the duration of your subscription plan.
             </div>
             <a>
                 Buy
