@@ -343,7 +343,10 @@ class VanillaController extends Controller
         }
 
         // Get only the data we want from the request
-        $data = $request->only(['map']);
+        $data = $request->only(['guid', 'map']);
+
+        // Get the players data from the database
+        $player = User::where('guid', $data['guid'])->first();
 
         // Get a random number to determine what kind of message we want
         if (random_int(0, 2) === 0) {
@@ -367,7 +370,7 @@ class VanillaController extends Controller
 
         // Return random message from config
         return response()->json([
-            'result' => config('plutonium.messages.'.random_int(0, count(config('plutonium.messages')) - 1)),
+            'result' => config('plutonium.language.'.$player->language.'.'.random_int(0, count(config('plutonium.language.'.$player->language.'.messages')) - 1)),
         ]);
     }
 
@@ -379,17 +382,15 @@ class VanillaController extends Controller
             return self::returnInvalidRequestJson('rules');
         }
 
+        // Get only the data we want from the request
+        $data = $request->only(['guid']);
+
+        // Fetch the player from the database
+        $player = User::where('guid', $data['guid'])->first();
+        
         // Return Rules for the players
         return response()->json([
-            'result' => [
-                "-------------[ ^2Clipstone Rules^7 ]-------------",
-                "[^2ClipstoneZombies^7]: Don't be a meanie",
-                "[^2ClipstoneZombies^7]: Don't say slurs",
-                "[^2ClipstoneZombies^7]: Don't block players",
-                "[^2ClipstoneZombies^7]: Don't hold rounds",
-                "[^2ClipstoneZombies^7]: Don't glitch, hack or cheat",
-                "-------------[ ^2Clipstone Rules^7 ]-------------",
-            ]
+            config('plutonium.language'.$player->language.'.rules');
         ]);
     }
 
@@ -402,18 +403,14 @@ class VanillaController extends Controller
         }
 
         // Get only the data we want from the request
-        // $data = $request->only(['page']);
+        $data = $request->only(['guid', 'page']);
+
+        // Fetch the player from the database
+        $player = User::where('guid', $data['guid'])->first();
 
         // Return Rules for the players
         return response()->json([
-            'result' => [
-                "---------[ ^2Clipstone Help Page 1^7 ]---------",
-                "[^2ClipstoneZombies^7]: .account > Show your account details",
-                "[^2ClipstoneZombies^7]: .leaderboard > Show top 5 leaderboard records",
-                "[^2ClipstoneZombies^7]: .rules > Show all Clipstone Zombies rules",
-                "[^2ClipstoneZombies^7]: .stats > Show all of your statistics",
-                "---------[ ^2Clipstone Help Page 1^7 ]---------",
-            ]
+            config('plutonium.language.'.$player->language.'.help');
         ]);
     }
 
@@ -434,12 +431,14 @@ class VanillaController extends Controller
         // Check if the user making the request is a high enough rank
         if ($staff->rank <= 5)
         {
+            // Return player is not staff json object
             return self::returnInvalidRequestJson('notStaff');
         }
 
         // Set the player being banned to be banned
         $player = User::where('name', 'like', '%'.$data['player_name'].'%')->update(['banned' => 1]);
 
+        // Return player has been banned json object
         return response()->json([
             'result' => [
                 "[^2ClipstoneZombies^7]: ".$data['player_name']." has been banned",
