@@ -21,6 +21,8 @@ class Money extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.store.money');
+        return view('components.store.money', [
+            'money' => config('plutonium.store.money'),
+        ]);
     }
 }
