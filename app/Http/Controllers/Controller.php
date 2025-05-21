@@ -14,9 +14,8 @@ abstract class Controller
      */
     public function returnInvalidRequestJson($type)
     {
-        if ($type == "account")
-        {
-            return response()->json([
+        $match = ($type) {
+            'account' => return response()->json([
                 'account-guid' => 0,
                 'account-name' => 0,
                 'account-display-name' => "0",
@@ -32,29 +31,22 @@ abstract class Controller
                     "0",
                 ]
             ]);
-        }
-
-        if ($type == "getLeaderboards")
-        {
-            return response()->json([
+            'getLeaderboards' => return response()->json([
+               'result' => [
+                    "[^2ClipstoneZombies^7] No available records to show at this time...",
+                ]
+            ]);
+            'notStaff' =>  return response()->json([
                 'result' => [
                     "[^2ClipstoneZombies^7] No available records to show at this time...",
                 ]
             ]);
-        }
-
-        if ($type == "notStaff")
-        {
-            return response()->json([
-                'result' => [
-                    "[^2ClipstoneZombies^7] No available records to show at this time...",
-                ]
+            default => return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed to be executed...",
             ]);
-        }
+        };
 
-        return response()->json([
-            'result' => "[^2ClipstoneZombies^7] This request failed to be executed...",
-        ]);
+        return $match;
     }
 
     public function roundType($players)
