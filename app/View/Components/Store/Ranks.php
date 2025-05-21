@@ -21,6 +21,8 @@ class Ranks extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.store.ranks');
+        return view('components.store.ranks', [
+            'ranks' => config('plutonium.store.ranks'),
+        ]);
     }
 }
