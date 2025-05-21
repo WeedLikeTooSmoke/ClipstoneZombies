@@ -69,8 +69,44 @@ return [
 
     'headers' => [
         'homepage' => [
-            '' => '',
-            '' => '',
+            'title' => 'Clipstone Zombies Homepage',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'search' => [
+            'title' => 'Clipstone Zombies Search',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'roundleaderboard' => [
+            'title' => 'Clipstone Zombies Round Leaderboard',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'statsleaderboard' => [
+            'title' => 'Clipstone Zombies Stats Leaderboard',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'usernames' => [
+            'title' => 'Clipstone Zombies Coloured Usernames',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'playeranks' => [
+            'title' => 'Clipstone Zombies Player Ranks',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'bankmoney' => [
+            'title' => 'Clipstone Zombies Bank Money',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'privateservers' => [
+            'title' => 'Clipstone Zombies Private Servers',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'profile' => [
+            'title' => 'Clipstone Zombies Profile',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
+        ],
+        'settings' => [
+            'title' => 'Clipstone Zombies Settings',
+            'header' => 'Welcome to the Plutonium Black Ops 2 Zombie Server! Fight endless waves of undead, explore custom maps, and team up with a passionate community. Gear up and survive the apocalypse!',
         ],
     ],
 ];
