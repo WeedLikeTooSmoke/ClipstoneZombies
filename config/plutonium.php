@@ -17,7 +17,7 @@ return [
                 "Welcome to ^2Clipstone Zombies^7. Play fair and enjoy the servers",
                 "Please read the rules to be sure you're not breaking them",
                 "-------------[ ^2Clipstone Zombies^7 ]-------------",
-            ]
+            ],
             'messages' => [
                 '[^2ClipstoneZombies^7]: Website > ^2zombies.clipst.one',
                 '[^2ClipstoneZombies^7]: Rule > Don\'t be a meanie',
