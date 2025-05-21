@@ -46,6 +46,7 @@ abstract class Controller
             ]);
         };
 
+        // Return the matched response from the match method
         return $match;
     }
 
