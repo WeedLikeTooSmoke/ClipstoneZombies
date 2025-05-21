@@ -22,7 +22,7 @@ class Money extends Component
     public function render(): View|Closure|string
     {
         return view('components.store.money', [
-            'money' => config('plutonium.store.money'),
+            'money' => Product::where('type', 'money')->get(),
         ]);
     }
 }
