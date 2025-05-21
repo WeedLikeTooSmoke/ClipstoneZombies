@@ -21,6 +21,8 @@ class Servers extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.store.servers');
+        return view('components.store.servers', [
+            'servers' => config('plutonium.store.servers'),
+        ]);
     }
 }
