@@ -7,49 +7,6 @@ use Illuminate\Support\Number;
 
 abstract class Controller
 {
-    /**
-     *  --------------------------
-     *  Plutonium Helper Functions
-     *  --------------------------
-     */
-    public function returnInvalidRequestJson($type)
-    {
-        $match = ($type) {
-            'account' => return response()->json([
-                'account-guid' => 0,
-                'account-name' => 0,
-                'account-display-name' => "0",
-                'account-verified' => 0,
-                'account-rank' => 0,
-                'account-level' => 0,
-                'account-banned' => 0,
-                'account-color' => 0,
-                'account-welcome' => [
-                    "0",
-                    "0",
-                    "0",
-                    "0",
-                ]
-            ]);
-            'getLeaderboards' => return response()->json([
-               'result' => [
-                    "[^2ClipstoneZombies^7] No available records to show at this time...",
-                ]
-            ]);
-            'notStaff' =>  return response()->json([
-                'result' => [
-                    "[^2ClipstoneZombies^7] No available records to show at this time...",
-                ]
-            ]);
-            default => return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed to be executed...",
-            ]);
-        };
-
-        // Return the matched response from the match method
-        return $match;
-    }
-
     public function roundType($players)
     {
         $match = match ($players) {
