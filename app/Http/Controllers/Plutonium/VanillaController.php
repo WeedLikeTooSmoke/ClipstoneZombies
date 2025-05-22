@@ -160,16 +160,20 @@ class VanillaController extends Controller
         }
 
         // Cache the record for quicker access after first run
-        $getLeaderboards = Cache::remember('getLeaderboards', 300, function () {
+        return Cache::remember('getLeaderboards', 300, function () use ($request) {
             // Get only the data we want from the request
             $data = $request->only(['map']);
 
             // Get the top 5 records from the leaderboards table
             $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->take(5)->get();
 
+            // Check if there are enough records to display
             if (count($records) < 5)
             {
-                return self::returnInvalidRequestJson('getLeaderboards');
+                // Return request invalid json data object data
+                return response()->json([
+                    'result' => "[^2ClipstoneZombies^7] Need more than 5 records to display them...",
+                ]);
             }
 
             // Return leaderboards data
@@ -268,7 +272,7 @@ class VanillaController extends Controller
         }
 
         // Cache the record for quicker access after first run
-        $getStatistics = Cache::remember('getStatistics', 300, function () {
+        return Cache::remember('getStatistics', 300, function () use ($request) {
             // Get only the data we want from the request
             $data = $request->only(['guid']);
 
@@ -429,10 +433,10 @@ class VanillaController extends Controller
 
         // Fetch the player from the database
         $player = User::where('guid', $data['guid'])->first();
-        
+
         // Return Rules for the players
         return response()->json([
-            config('plutonium.language'.$player->language.'.rules');
+            'result' => config('language.rules'),
         ]);
     }
 
@@ -455,7 +459,7 @@ class VanillaController extends Controller
 
         // Return Rules for the players
         return response()->json([
-            config('plutonium.language.'.$player->language.'.help');
+            'result' => config('language.help'),
         ]);
     }
 
