@@ -473,7 +473,11 @@ class VanillaController extends Controller
         if ($staff->rank <= 5)
         {
             // Return player is not staff json object
-            return self::returnInvalidRequestJson('notStaff');
+            return response()->json([
+                'result' => [
+                    "[^2ClipstoneZombies^7] Only staff members can use this command...",
+                ]
+            ]);
         }
 
         // Set the player being banned to be banned
