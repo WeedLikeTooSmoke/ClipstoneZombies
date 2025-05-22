@@ -26,7 +26,17 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('account');
+            // Return request invalid json data object data
+            return response()->json([
+                'account-guid' => 0,
+                'account-name' => 0,
+                'account-display-name' => "0",
+                'account-verified' => 0,
+                'account-rank' => 0,
+                'account-level' => 0,
+                'account-banned' => 0,
+                'account-color' => 0,
+            ]);
         }
 
         // Get only the data we want from the request
@@ -41,8 +51,17 @@ class VanillaController extends Controller
             // Add player to joins table for register
             $addJoin = Join::updateOrCreate(['guid' => $data['guid']],['name' => $data['name']]);
 
-            // Return not registered json data
-            return self::returnInvalidRequestJson('account');
+            // Return not registered json object data
+            return response()->json([
+                'account-guid' => 0,
+                'account-name' => 0,
+                'account-display-name' => "0",
+                'account-verified' => 0,
+                'account-rank' => 0,
+                'account-level' => 0,
+                'account-banned' => 0,
+                'account-color' => 0,
+            ]);
         }
 
         // Check if player has verified email
@@ -72,7 +91,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('account');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -81,13 +103,6 @@ class VanillaController extends Controller
         // Get the player who joined the server
         $player = User::where('guid', $data['guid'])->first();
         $stats = UsersStats::where('guid', $data['guid'])->first();
-
-        // Player does not have an account
-        if (!$player)
-        {
-            // Return not registered json data
-            return self::returnInvalidRequestJson('getAccount');
-        }
 
         // Return players data
         return response()->json([
@@ -107,7 +122,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('leaderboards');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -134,7 +152,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('getLeaderboards');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -167,7 +188,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('statistics');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -233,7 +257,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('getStatistics');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -261,7 +288,9 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('getStatistics');
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -339,7 +368,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('messages');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -379,7 +411,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('rules');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -399,7 +434,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('rules');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the data we want from the request
@@ -419,7 +457,10 @@ class VanillaController extends Controller
         // Check if the request is valid
         if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
         {
-            return self::returnInvalidRequestJson('banPlayer');
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+            ]);
         }
 
         // Get only the requested data from the request
