@@ -94,7 +94,9 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 
@@ -125,7 +127,9 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 
@@ -144,7 +148,9 @@ class VanillaController extends Controller
 
         // Return success json result
         return response()->json([
-            'result' => "[^2ClipstoneZombies^7] Your record has been uploaded and saved!",
+            'result' => [
+                "[^2ClipstoneZombies^7] Your record has been uploaded and saved!"
+            ],
         ]);
     }
 
@@ -155,7 +161,9 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 
@@ -172,7 +180,9 @@ class VanillaController extends Controller
             {
                 // Return request invalid json data object data
                 return response()->json([
-                    'result' => "[^2ClipstoneZombies^7] Need more than 5 records to display them...",
+                    'result' => [
+                        "[^2ClipstoneZombies^7] Need more than 5 records to display them...",
+                    ],
                 ]);
             }
 
@@ -256,7 +266,9 @@ class VanillaController extends Controller
 
         // Return success json result
         return response()->json([
-            'result' => "[^2ClipstoneZombies^7] Your stats have been uploaded and saved!",
+            'result' => [
+                "[^2ClipstoneZombies^7] Your stats have been uploaded and saved!",
+            ],
         ]);
     }
 
@@ -267,7 +279,9 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 
@@ -300,7 +314,9 @@ class VanillaController extends Controller
         if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 
@@ -381,15 +397,14 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 
         // Get only the data we want from the request
-        $data = $request->only(['guid', 'map']);
-
-        // Get the players data from the database
-        $player = User::where('guid', $data['guid'])->first();
+        $data = $request->only(['map']);
 
         // Get a random number to determine what kind of message we want
         if (random_int(0, 2) === 0) {
@@ -401,19 +416,25 @@ class VanillaController extends Controller
             if (!$record) {
                 // Return highest round record json
                 return response()->json([
-                    'result' => "[^2ClipstoneZombies^7]: ".ucfirst($data['map'])." ".self::roundType($random)." Record > ^2This record has not yet been set...",
+                    'result' => [
+                        "[^2ClipstoneZombies^7]: ".ucfirst($data['map'])." ".self::roundType($random)." Record > ^2This record has not yet been set...",
+                    ],
                 ]);
             }
 
             // Return highest round record json
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7]: ".ucfirst($data['map'])." ".self::roundType($record['players_count'])." Record > ^2Round ".$record['round']." By ".$record['players'],
+                'result' => [
+                    "[^2ClipstoneZombies^7]: ".ucfirst($data['map'])." ".self::roundType($record['players_count'])." Record > ^2Round ".$record['round']." By ".$record['players'],
+                ],
             ]);
         }
 
         // Return random message from config
         return response()->json([
-            'result' => config('language.messages.'.random_int(0, count(config('language.messages')) - 1)),
+            'result' => [
+                config('language.messages.'.random_int(0, count(config('language.messages')) - 1)),
+            ],
         ]);
     }
 
@@ -424,15 +445,11 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
-
-        // Get only the data we want from the request
-        $data = $request->only(['guid']);
-
-        // Fetch the player from the database
-        $player = User::where('guid', $data['guid'])->first();
 
         // Return Rules for the players
         return response()->json([
@@ -452,10 +469,7 @@ class VanillaController extends Controller
         }
 
         // Get only the data we want from the request
-        $data = $request->only(['guid', 'page']);
-
-        // Fetch the player from the database
-        $player = User::where('guid', $data['guid'])->first();
+        $data = $request->only(['page']);
 
         // Return Rules for the players
         return response()->json([
@@ -470,7 +484,9 @@ class VanillaController extends Controller
         {
             // Return request invalid json data object data
             return response()->json([
-                'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
             ]);
         }
 

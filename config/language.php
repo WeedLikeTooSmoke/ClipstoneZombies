@@ -33,6 +33,7 @@ return [
         '[^2ClipstoneZombies^7]: .leaderboard > Show top 5 leaderboard records',
         '[^2ClipstoneZombies^7]: .rules > Show all Clipstone Zombies rules',
         '[^2ClipstoneZombies^7]: .stats > Show all of your statistics',
+        '[^2ClipstoneZombies^7]: .quit > Saves your stats & kicks you',
         '---------[ ^2Clipstone Help Page 1^7 ]---------',
     ],
 ];
