@@ -24,7 +24,7 @@ class VanillaController extends Controller
     public function account(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -92,7 +92,7 @@ class VanillaController extends Controller
     public function getAccount(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -123,7 +123,7 @@ class VanillaController extends Controller
     public function leaderboards(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -153,7 +153,7 @@ class VanillaController extends Controller
     public function getLeaderboards(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -189,7 +189,7 @@ class VanillaController extends Controller
     public function statistics(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -258,7 +258,7 @@ class VanillaController extends Controller
     public function getStatistics(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -289,7 +289,7 @@ class VanillaController extends Controller
     public function getTopStatistics(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             return response()->json([
                 'result' => "[^2ClipstoneZombies^7] This request failed validation to the api...",
@@ -369,7 +369,7 @@ class VanillaController extends Controller
     public function messages(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -412,7 +412,7 @@ class VanillaController extends Controller
     public function rules(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -435,7 +435,7 @@ class VanillaController extends Controller
     public function help(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
@@ -458,7 +458,7 @@ class VanillaController extends Controller
     public function banPlayer(Request $request)
     {
         // Check if the request is valid
-        if ($request->header('Api-Key') !== config('plutonium.api.key') || $request->header('Api-Agent') !== config('plutonium.api.agent'))
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
         {
             // Return request invalid json data object data
             return response()->json([
