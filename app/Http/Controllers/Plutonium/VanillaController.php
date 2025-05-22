@@ -73,7 +73,7 @@ class VanillaController extends Controller
         return response()->json([
             'account-guid' => $player->guid,
             'account-name' => $player->name,
-            'account-display-name' => "[^{$player->color}". self::levelType(config('plutonium.settings.level_type'), $player->level) ."^7][^{$player->color}". self::rankType(config('plutonium.settings.rank_type'), $player->rank) ."^7] ^{$player->color}{$player->name}",
+            'account-display-name' => "[^{$player->color}". Number::abbreviate($player->level) ."^7][^{$player->color}". self::rankType(config('plutonium.settings.rank_type'), $player->rank) ."^7] ^{$player->color}{$player->name}",
             'account-verified' => $verified,
             'account-rank' => $player->rank,
             'account-level' => $player->level,
@@ -111,7 +111,7 @@ class VanillaController extends Controller
         return response()->json([
             'result' => [
                 "-------------[ ^2Account^7 ]-------------",
-                "[^2ClipstoneZombies^7]: Level > ^2".self::levelType(config('plutonium.settings.level_type'), $player->level),
+                "[^2ClipstoneZombies^7]: Level > ^2".Number::abbreviate($player->level),
                 "[^2ClipstoneZombies^7]: Rank > ^2".self::rankType(config('plutonium.settings.rank_type'), $player->rank),
                 "[^2ClipstoneZombies^7]: Bank > ^2$".number_format($stats->score),
                 "[^2ClipstoneZombies^7]: Joined > ^2".$player->created_at->diffForHumans(),
