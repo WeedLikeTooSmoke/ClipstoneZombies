@@ -36,6 +36,7 @@ class VanillaController extends Controller
                 'account-level' => 0,
                 'account-banned' => 0,
                 'account-color' => 0,
+                'account-language' => 'en',
             ]);
         }
 
@@ -61,6 +62,7 @@ class VanillaController extends Controller
                 'account-level' => 0,
                 'account-banned' => 0,
                 'account-color' => 0,
+                'account-language' => 'en',
             ]);
         }
 
@@ -77,6 +79,7 @@ class VanillaController extends Controller
             'account-level' => $player->level,
             'account-banned' => $player->banned,
             'account-color' => $player->color,
+            'account-language' => 'en',
             'account-welcome' => [
                 "-------------[ ^2Clipstone Zombies^7 ]-------------",
                 "Welcome to ^2Clipstone Zombies^7. Play fair and enjoy the servers",
@@ -402,7 +405,7 @@ class VanillaController extends Controller
 
         // Return random message from config
         return response()->json([
-            'result' => config('plutonium.language.'.$player->language.'.'.random_int(0, count(config('plutonium.language.'.$player->language.'.messages')) - 1)),
+            'result' => config('plutonium.messages.'.random_int(0, count(config('plutonium.messages')) - 1)),
         ]);
     }
 
