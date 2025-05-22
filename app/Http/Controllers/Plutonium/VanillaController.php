@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Number;
 use Illuminate\Support\Carbon;
 
@@ -158,29 +159,32 @@ class VanillaController extends Controller
             ]);
         }
 
-        // Get only the data we want from the request
-        $data = $request->only(['map']);
+        // Cache the record for quicker access after first run
+        $getLeaderboards = Cache::remember('getLeaderboards', 300, function () {
+            // Get only the data we want from the request
+            $data = $request->only(['map']);
 
-        // Get the top 5 records from the leaderboards table
-        $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->take(5)->get();
+            // Get the top 5 records from the leaderboards table
+            $records = Leaderboard::orderBy('round', 'desc')->where('map', $data['map'])->where('gamemode', 'Vanilla')->take(5)->get();
 
-        if (count($records) < 5)
-        {
-            return self::returnInvalidRequestJson('getLeaderboards');
-        }
+            if (count($records) < 5)
+            {
+                return self::returnInvalidRequestJson('getLeaderboards');
+            }
 
-        // Return leaderboards data
-        return response()->json([
-            'result' => [
-                "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
-                "[^2ClipstoneZombies^7]: 1st > ^2". $records[0]->round."^7 by ^2".$records[0]->players,
-                "[^2ClipstoneZombies^7]: 2nd > ^2". $records[1]->round."^7 by ^2".$records[1]->players,
-                "[^2ClipstoneZombies^7]: 3rd > ^2". $records[2]->round."^7 by ^2".$records[2]->players,
-                "[^2ClipstoneZombies^7]: 4th > ^2". $records[3]->round."^7 by ^2".$records[3]->players,
-                "[^2ClipstoneZombies^7]: 5th > ^2". $records[4]->round."^7 by ^2".$records[4]->players,
-                "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
-            ]
-        ]);
+            // Return leaderboards data
+            return response()->json([
+                'result' => [
+                    "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: 1st > ^2". $records[0]->round."^7 by ^2".$records[0]->players,
+                    "[^2ClipstoneZombies^7]: 2nd > ^2". $records[1]->round."^7 by ^2".$records[1]->players,
+                    "[^2ClipstoneZombies^7]: 3rd > ^2". $records[2]->round."^7 by ^2".$records[2]->players,
+                    "[^2ClipstoneZombies^7]: 4th > ^2". $records[3]->round."^7 by ^2".$records[3]->players,
+                    "[^2ClipstoneZombies^7]: 5th > ^2". $records[4]->round."^7 by ^2".$records[4]->players,
+                    "-------------[ ^2".ucfirst($data['map'])." Records^7 ]-------------",
+                ]
+            ]);
+        });
     }
 
     public function statistics(Request $request)
@@ -263,24 +267,27 @@ class VanillaController extends Controller
             ]);
         }
 
-        // Get only the data we want from the request
-        $data = $request->only(['guid']);
+        // Cache the record for quicker access after first run
+        $getStatistics = Cache::remember('getStatistics', 300, function () {
+            // Get only the data we want from the request
+            $data = $request->only(['guid']);
 
-        // Get the player who executed the command
-        $player = UsersStats::where('guid', $data['guid'])->first();
+            // Get the player who executed the command
+            $player = UsersStats::where('guid', $data['guid'])->first();
 
-        // Return players statistics
-        return response()->json([
-            'result' => [
-                "-------------[ ^2My Statistics^7 ]-------------",
-                "[^2ClipstoneZombies^7]: Kills > ^2".number_format($player->kills),
-                "[^2ClipstoneZombies^7]: Downs > ^2".number_format($player->downs),
-                "[^2ClipstoneZombies^7]: Deaths > ^2".number_format($player->deaths),
-                "[^2ClipstoneZombies^7]: Revives > ^2".number_format($player->revives),
-                "[^2ClipstoneZombies^7]: Headshots > ^2".number_format($player->headshots),
-                "-------------[ ^2My Statistics^7 ]-------------",
-            ]
-        ]);
+            // Return players statistics
+            return response()->json([
+                'result' => [
+                    "-------------[ ^2My Statistics^7 ]-------------",
+                    "[^2ClipstoneZombies^7]: Kills > ^2".number_format($player->kills),
+                    "[^2ClipstoneZombies^7]: Downs > ^2".number_format($player->downs),
+                    "[^2ClipstoneZombies^7]: Deaths > ^2".number_format($player->deaths),
+                    "[^2ClipstoneZombies^7]: Revives > ^2".number_format($player->revives),
+                    "[^2ClipstoneZombies^7]: Headshots > ^2".number_format($player->headshots),
+                    "-------------[ ^2My Statistics^7 ]-------------",
+                ]
+            ]);
+        });
     }
 
     public function getTopStatistics(Request $request)
