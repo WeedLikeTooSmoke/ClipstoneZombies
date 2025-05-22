@@ -18,9 +18,6 @@ use App\Models\UsersStats;
 
 class VanillaController extends Controller
 {
-    /**
-     * Game Functions
-     */
     public function account(Request $request)
     {
         // Check if the request is valid
