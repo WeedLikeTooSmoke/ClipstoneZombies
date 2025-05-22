@@ -5,6 +5,7 @@ namespace App\View\Components\Store;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+Use App\Models\Product;
 
 class Servers extends Component
 {
