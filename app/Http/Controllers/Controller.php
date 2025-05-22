@@ -25,27 +25,6 @@ abstract class Controller
         return $match;
     }
 
-    public function levelType($type, $level)
-    {
-        // Check the type of levels
-        if ($type == 1)
-        {
-            // Shortened level strings e.g 1000 = 1k
-            return Number::abbreviate($level);
-        }
-
-        // Check the type of levels
-        if ($type == 2)
-        {
-            // Roman numeral levels
-            static $formatToRomanNumerals = new \NumberFormatter('@numbers=roman', \NumberFormatter::DECIMAL);
-            return $formatToRomanNumerals->format($level);
-        }
-
-        // Return the type of levels wanted
-        return $level;
-    }
-
     public function rankType($type, $rank)
     {
         $match = match ($rank)
