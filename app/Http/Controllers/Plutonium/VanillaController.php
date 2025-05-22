@@ -405,7 +405,7 @@ class VanillaController extends Controller
 
         // Return random message from config
         return response()->json([
-            'result' => config('plutonium.messages.'.random_int(0, count(config('plutonium.messages')) - 1)),
+            'result' => config('language.messages.'.random_int(0, count(config('language.messages')) - 1)),
         ]);
     }
 
