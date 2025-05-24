@@ -14,7 +14,7 @@ class Leaderboards extends Component
     public function render()
     {
         return view('livewire.leaderboards', [
-            'records' => Leaderboard::where('players_count', $this->type)->orderBy('round', 'desc')->paginate(10),
+            'records' => Leaderboard::where('players_count', $this->type)->orderBy('round', 'desc')->limit(10)->get(),
         ]);
     }
 }

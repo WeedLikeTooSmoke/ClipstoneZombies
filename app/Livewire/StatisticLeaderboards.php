@@ -11,11 +11,11 @@ class StatisticLeaderboards extends Component
 {
     use WithPagination;
 
-    public $orderBy = 'score';
+    public $orderBy = 'kills';
     public function render()
     {
         return view('livewire.statistic-leaderboards', [
-            'records' => UsersStats::orderBy($this->orderBy, 'desc')->paginate(10),
+            'records' => UsersStats::orderBy($this->orderBy, 'desc')->limit(10)->get(),
         ]);
     }
 }
