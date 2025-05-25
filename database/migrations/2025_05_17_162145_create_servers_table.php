@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->string('players');
+            $table->integer('players_max_count');
             $table->integer('players_count');
             $table->timestamps();
         });

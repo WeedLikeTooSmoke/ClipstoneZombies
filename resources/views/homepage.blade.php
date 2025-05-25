@@ -9,7 +9,7 @@
         <x-global.navigator/>
         <x-global.header/>
 
-        <x-homepage.serverlist/>
+        <livewire:serverlist/>
         <x-homepage.statistics/>
         <x-homepage.features/>
 

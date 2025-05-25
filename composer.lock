@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "471f14dd24dcafe41b42d28caef7fd52",
+    "content-hash": "bdfc7ec41fac57052faa0da8d516061e",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -2167,137 +2167,6 @@
                 }
             ],
             "time": "2025-02-27T13:08:55+00:00"
-        },
-        {
-            "name": "jerome/fetch-php",
-            "version": "2.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Thavarshan/fetch-php.git",
-                "reference": "9c9831207fb139b9c01602f01800dfcff1349c1f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Thavarshan/fetch-php/zipball/9c9831207fb139b9c01602f01800dfcff1349c1f",
-                "reference": "9c9831207fb139b9c01602f01800dfcff1349c1f",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^7.9",
-                "guzzlehttp/psr7": "^2.7",
-                "jerome/matrix": "^2.0",
-                "php": "^8.0",
-                "psr/http-message": "^1.0|^2.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.64",
-                "laravel/pint": "^1.21",
-                "mockery/mockery": "^1.6",
-                "pestphp/pest": "^2.0|^3.0",
-                "phpstan/phpstan": "^1.11.5",
-                "squizlabs/php_codesniffer": "^3.7",
-                "symfony/var-dumper": "^6.0|^7.2"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/Fetch/Http/fetch.php"
-                ],
-                "psr-4": {
-                    "Fetch\\": "src/Fetch/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jerome Thayananthajothy",
-                    "email": "tjthavarshan@gmail.com"
-                }
-            ],
-            "description": "The JavaScript fetch API for PHP.",
-            "homepage": "https://fetch-php.thavarshan.com",
-            "support": {
-                "issues": "https://github.com/Thavarshan/fetch-php/issues",
-                "source": "https://github.com/Thavarshan/fetch-php"
-            },
-            "funding": [
-                {
-                    "url": "https://www.buymeacoffee.com/thavarshan",
-                    "type": "buy_me_a_coffee"
-                },
-                {
-                    "url": "https://github.com/thavarshan",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-05-03T14:46:17+00:00"
-        },
-        {
-            "name": "jerome/matrix",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Thavarshan/matrix.git",
-                "reference": "d740e0f7d1e14def909405109fd3202df5b4251e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Thavarshan/matrix/zipball/d740e0f7d1e14def909405109fd3202df5b4251e",
-                "reference": "d740e0f7d1e14def909405109fd3202df5b4251e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.3 || ^8.4"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.65",
-                "guzzlehttp/guzzle": "^7.0",
-                "mockery/mockery": "^1.6",
-                "pestphp/pest": "^3.0",
-                "php-mock/php-mock": "^2.5",
-                "php-mock/php-mock-mockery": "^1.4",
-                "phpstan/phpstan": "^1.11.5",
-                "squizlabs/php_codesniffer": "^3.11"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/Matrix/Support/async.php"
-                ],
-                "psr-4": {
-                    "Matrix\\": "src/Matrix/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jerome Thayananthajothy",
-                    "email": "tjthavarshan@gmail.com"
-                }
-            ],
-            "description": "An unparalleled PHP asynchronous experience, offering genuine concurrency and fiber-based task management.",
-            "homepage": "https://thavarshan.com",
-            "support": {
-                "issues": "https://github.com/Thavarshan/matrix/issues",
-                "source": "https://github.com/Thavarshan/matrix"
-            },
-            "funding": [
-                {
-                    "url": "https://www.buymeacoffee.com/thavarshan",
-                    "type": "buy_me_a_coffee"
-                },
-                {
-                    "url": "https://github.com/thavarshan",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-12-06T04:59:18+00:00"
         },
         {
             "name": "jester/q3tool",
