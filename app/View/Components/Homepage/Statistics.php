@@ -27,7 +27,7 @@ class Statistics extends Component
     public function render(): View|Closure|string
     {
         $highestRound = Cache::remember('highestRound', 300, function () {
-             return Leaderboard::max('round');
+             return Leaderboard::max('round') ?? 0;
         });
 
         $zombiesKilled = Cache::remember('zombiesKilled', 300, function () {
