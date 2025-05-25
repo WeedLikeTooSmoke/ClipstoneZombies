@@ -12,7 +12,7 @@
                 <div class="header">
                     <i class="fa-solid fa-circle pulse"></i> &nbsp;&nbsp;&nbsp;{{ $server->address }}
                 </div>
-                <progress max="{{ $server->max_players_count }}" value="{{ $server->players_count }}"></progress>
+                <progress max="{{ $server->players_max_count }}" value="{{ $server->players_count }}"></progress>
             </div>
         @endforeach
     </div>
