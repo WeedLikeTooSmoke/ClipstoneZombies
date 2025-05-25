@@ -19,10 +19,10 @@ class Serverlist extends Component
             $updateOrCreate = Server::updateOrCreate([
                 'address' => $address[0].":".$address[1],
             ],[
-                'name' => $servers['hostname'],
+                'name' => $servers['hostname'] ?? 'Offline',
                 'address' => $address[0].":".$address[1],
-                'players_max_count' => $servers['maxplayers'],
-                'players_count' => $servers['realClients'],
+                'players_max_count' => $servers['maxplayers'] ?? 0,
+                'players_count' => $servers['realClients'] ?? 0,
             ]);
         }
 
