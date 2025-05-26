@@ -8,6 +8,8 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Facades\Cache;
 
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Subscription;
 
 class DashboardStatsOverview extends BaseWidget
 {
@@ -18,23 +20,33 @@ class DashboardStatsOverview extends BaseWidget
         });
         $users = User::count() - $cachedUsers;
 
+        $productsUsers = Cache::remember('Products', 86400, function () {
+            return Product::count();
+        });
+        $products = Product::count() - $productsUsers;
+
+        $subscriptionsUsers = Cache::remember('Subscriptions', 86400, function () {
+            return Subscription::count();
+        });
+        $subscriptions = Subscription::count() - $subscriptionsUsers;
+
         return [
-            Stat::make('Registered Users', User::count())
+            Stat::make('Users', User::count())
                 ->description($users.' increase')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->chart([$users, User::count()])
                 ->color('info'),
 
-            Stat::make('Newspaper Posts', User::count())
-                ->description($users.' increase')
+            Stat::make('Products', Product::count())
+                ->description($products.' increase')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->chart([$users, User::count()])
+                ->chart([$products, Product::count()])
                 ->color('info'),
 
-            Stat::make('Subscriptions', User::count())
-                ->description($users.' increase')
+            Stat::make('Subscriptions', Subscription::count())
+                ->description($subscriptions.' increase')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->chart([$users, User::count()])
+                ->chart([$subscriptions, Subscription::count()])
                 ->color('info'),
         ];
     }
