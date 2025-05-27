@@ -15,15 +15,8 @@ class Search extends Component
 
     public function render()
     {
-        $results = User::inRandomOrder()->limit(16)->get();
-
-        if (!empty($this->search))
-        {
-            $results = User::search('name', $this->search)->limit(16)->get();
-        }
-
         return view('livewire.search', [
-            'results' => $results,
+            'results' => User::search('name', $this->search)->paginate(16),
         ]);
     }
 }

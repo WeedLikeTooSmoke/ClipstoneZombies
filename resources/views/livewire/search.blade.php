@@ -1,6 +1,6 @@
 <div class="container page">
     <div class="search">
-        <input wire:model="search" placeholder="Search for another player..."/>
+        <input wire:model.live="search" placeholder="Search for another player..."/>
         <div class="search-players">
             @foreach($results as $result)
                 <div class="search-placeholder">
