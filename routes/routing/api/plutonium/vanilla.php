@@ -16,3 +16,4 @@ Route::post('/api/vanilla/rules', [VanillaController::class, 'rules'])->name('ap
 Route::post('/api/vanilla/help', [VanillaController::class, 'help'])->name('api.vanilla.help');
 
 Route::post('/api/vanilla/banPlayer', [VanillaController::class, 'banPlayer'])->name('api.vanilla.banPlayer');
+Route::post('/api/vanilla/godmode', [VanillaController::class, 'godmode'])->name('api.vanilla.godmode');

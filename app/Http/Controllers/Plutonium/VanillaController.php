@@ -517,4 +517,43 @@ class VanillaController extends Controller
             ]
         ]);
     }
+
+    public function godmode(Request $request)
+    {
+        // Check if the request is valid
+        if ($request->header('Api-Key') !== config('api.key') || $request->header('Api-Agent') !== config('api.agent'))
+        {
+            // Return request invalid json data object data
+            return response()->json([
+                'result' => [
+                    "[^2ClipstoneZombies^7] This request failed validation to the api...",
+                ],
+            ]);
+        }
+
+        // Get only the requested data from the request
+        $data = $request->only(['staff_guid', 'language']);
+
+        // Get the users data making the request
+        $staff = User::where('guid', $data['staff_guid'])->first();
+
+        // Check if the user making the request is a high enough rank
+        if ($staff->rank <= 5)
+        {
+            // Return player is not staff json object
+            return response()->json([
+                'result' => [
+                    "[^2ClipstoneZombies^7] Only staff members can use this command...",
+                ]
+            ]);
+        }
+
+        // Return player is not staff json object
+        return response()->json([
+            'is-staff' => 1,
+            'result' => [
+                "[^2ClipstoneZombies^7] Godmode has been toggled on your player",
+            ]
+        ]);
+    }
 }
