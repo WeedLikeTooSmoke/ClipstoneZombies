@@ -1,6 +1,6 @@
 <div class="container page">
     <div class="search">
-        <input placeholder="Search for another player..."/>
+        <input wire:model="search" placeholder="Search for another player..."/>
         <div class="search-players">
             <div class="search-placeholder">
 
