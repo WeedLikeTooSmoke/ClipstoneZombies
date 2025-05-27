@@ -49,10 +49,10 @@ return [
     'shape' => 'circle',
 
     // Image width, in pixel
-    'width' => 100,
+    'width' => 75,
 
     // Image height, in pixel
-    'height' => 100,
+    'height' => 75,
 
     // Responsive SVG, height and width attributes are not added when true
     'responsive' => false,
@@ -61,10 +61,10 @@ return [
     'chars' => 2,
 
     // font size
-    'fontSize' => 48,
+    'fontSize' => 38,
 
     // convert initial letter in uppercase
-    'uppercase' => false,
+    'uppercase' => true,
 
     // Right to Left (RTL)
     'rtl' => false,
@@ -80,21 +80,7 @@ return [
 
     // List of background colors to be used, randomly selected based on name supplied
     'backgrounds' => [
-        '#f44336',
-        '#E91E63',
-        '#9C27B0',
-        '#673AB7',
-        '#3F51B5',
-        '#2196F3',
-        '#03A9F4',
-        '#00BCD4',
-        '#009688',
-        '#4CAF50',
-        '#8BC34A',
-        '#CDDC39',
-        '#FFC107',
-        '#FF9800',
-        '#FF5722',
+        '#599bfa',
     ],
 
     'border' => [
@@ -131,21 +117,7 @@ return [
         ],
         'colorful' => [
             'backgrounds' => [
-                '#f44336',
-                '#E91E63',
-                '#9C27B0',
-                '#673AB7',
-                '#3F51B5',
-                '#2196F3',
-                '#03A9F4',
-                '#00BCD4',
-                '#009688',
-                '#4CAF50',
-                '#8BC34A',
-                '#CDDC39',
-                '#FFC107',
-                '#FF9800',
-                '#FF5722',
+                '#599bfa',
             ],
             'foregrounds' => ['#FFFFFF'],
         ],

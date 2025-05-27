@@ -6,7 +6,8 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4.7",
+        "ext-gd": "*",
         "filament/filament": "^3.3",
         "jester/q3tool": "^0.2.1",
         "laravel/cashier": "^15.6",

@@ -2,9 +2,11 @@
     <div class="search">
         <input wire:model="search" placeholder="Search for another player..."/>
         <div class="search-players">
-            <div class="search-placeholder">
-
-            </div>
+            @foreach($results as $result)
+                <div class="search-placeholder">
+                    <img src="{{ Avatar::create($result->name)->toBase64() }}" />
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

@@ -298,6 +298,7 @@ header img {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 25px;
     width: 100%;
+    margin-top: 25px;
 }
 .search .search-placeholder {
     width: 100%;

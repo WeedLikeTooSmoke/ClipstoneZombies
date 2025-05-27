@@ -15,15 +15,15 @@ class Search extends Component
 
     public function render()
     {
-        $result = User::inRandomOrder()->limit(16)->get();
+        $results = User::inRandomOrder()->limit(16)->get();
 
         if (!empty($this->search))
         {
-            $result = User::search('name', $this->search)->limit(16)->get();
+            $results = User::search('name', $this->search)->limit(16)->get();
         }
 
         return view('livewire.search', [
-            'result' => $result,
+            'results' => $results,
         ]);
     }
 }
