@@ -304,6 +304,22 @@ header img {
     width: 100%;
     padding: 25px;
     border-radius: 10px;
+    background-color: #63636314;
+    position: relative;
+}
+.search .username {
+    color: white;
+    position: absolute;
+    top: 45px;
+    left: 125px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.search .description {
+    color: white;
+    position: absolute;
+    top: 65px;
+    left: 125px;
 }
 
 /*

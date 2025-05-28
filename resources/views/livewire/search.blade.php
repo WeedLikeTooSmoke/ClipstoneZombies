@@ -5,6 +5,8 @@
             @foreach($results as $result)
                 <div class="search-placeholder">
                     <img src="{{ Avatar::create($result->name)->toBase64() }}" />
+                    <div class="username">{{ $result->name }}</div>
+                    <div class="description">Level {{ $result->level }}</div>
                 </div>
             @endforeach
         </div>
