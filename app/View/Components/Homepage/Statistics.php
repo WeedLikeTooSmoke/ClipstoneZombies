@@ -35,7 +35,7 @@ class Statistics extends Component
         });
 
         $moneyAccumulated = Cache::remember('moneyAccumulated', 300, function () {
-             return "£".number_format(UsersStats::sum('score'));
+             return UsersStats::sum('score');
         });
 
         $missionsCompleted = Cache::remember('missionsCompleted', 300, function () {

@@ -22,7 +22,7 @@
         <div>
             Money Accumulated
             <div class="homepage-statistics-amount">
-                {{ $moneyAccumulated }}
+                £{{ Number::forHumans($moneyAccumulated) }}
             </div>
         </div>
         <div>
