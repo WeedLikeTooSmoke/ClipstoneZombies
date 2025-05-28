@@ -28,17 +28,6 @@
             </div>
 
             <div class="dropdown">
-                <a>Store <i class="fa-solid fa-chevron-up"></i></a>
-                <div class="dropdown-items">
-                    <a href="/usernames" wire:navigate><i class="fa-solid fa-palette"></i> Username Color</a>
-                    <a href="/ranks" wire:navigate><i class="fa-solid fa-star"></i> Player Ranks</a>
-                    <a href="/money" wire:navigate><i class="fa-solid fa-money-bill"></i> Bank Money</a>
-                    <div class="divider"></div>
-                    <a href="/servers" wire:navigate><i class="fa-solid fa-server"></i> Private Servers</a>
-                </div>
-            </div>
-
-            <div class="dropdown">
                 <a>Account <i class="fa-solid fa-chevron-up"></i></a>
                 <div class="dropdown-items">
                     @if (Auth()->User())
